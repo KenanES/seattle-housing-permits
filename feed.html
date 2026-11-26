@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Permit Feed &amp; Open Data API: Seattle Housing Permits Information</title>
+  <meta name="description" content="Live feed of newly issued Seattle housing permits, Middle Housing and DADU filings, Land Use MUP decisions, direct SDCI Socrata API query bench, and data methodology.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://seattlepermits.org/feed">
+  <link rel="alternate" type="text/markdown" href="https://seattlepermits.org/llms.txt" title="LLM summary (llms.txt)">
+  <link rel="alternate" type="application/json" href="https://seattlepermits.org/data/seattle-permits-summary.json" title="Machine-readable JSON snapshot">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#live-feed">Skip to live permit feed</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="Seattle Housing Permits Information home">
+        <span class="brand-name">Seattle Housing Permits Information</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary sections">
+        <a href="./index.html">Overview &amp; Report</a>
+        <a href="./index.html#production">Production</a>
+        <a href="./index.html#turnaround">Timelines</a>
+        <a href="./index.html#pipeline">Pipeline</a>
+        <a href="./index.html#geography">Seattle Map</a>
+        <a href="./feed.html" class="is-active nav-feed-link">Live Feed &amp; API</a>
+      </nav>
+
+      <div class="header-dateline">
+        <a href="./index.html" style="color:var(--pine);text-decoration:none;font-weight:600">Back to main report</a>
+      </div>
+    </div>
+
+    <nav class="mobile-jump-bar" aria-label="Mobile navigation">
+      <div class="mobile-jump-inner">
+        <a href="./index.html">Overview</a>
+        <a href="#live-feed" class="is-active">Live Feed</a>
+        <a href="#datasets">API Catalog</a>
+        <a href="#methodology">Methodology</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="data-section" id="live-feed" aria-labelledby="feed-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h1 class="hero-h1" id="feed-title" style="font-size:clamp(2rem,3.4vw,2.9rem);margin-bottom:0.65rem">Live Seattle permit feed and Open Data API bench</h1>
+            <p class="section-desc">Stream newly issued housing building permits, Middle Housing and DADU filings, and Land Use Master Use Permit decisions directly from City of Seattle Socrata Open Data endpoints.</p>
+          </div>
+        </div>
+
+        <div class="editorial-col" style="margin-bottom:2.25rem">
+          <div class="block-header-row">
+            <div>
+              <h2 class="block-heading">Live SDCI permit stream</h2>
+              <p class="block-desc">Queries <code>data.seattle.gov</code> live from your browser (CORS enabled). Optional Socrata App Token raises anonymous rate limits.</p>
+            </div>
+          </div>
+
+          <div class="token-row">
+            <select class="select-control" id="live-query-preset" aria-label="Choose live feed stream">
+              <option value="latest_housing">Latest 12 issued housing building permits (76t5-zqzr)</option>
+              <option value="latest_middle">Latest 12 Middle Housing &amp; DADU applications (76t5-zqzr)</option>
+              <option value="latest_mup">Latest 12 Land Use MUP decisions (ht3q-kdvx)</option>
+            </select>
+            <input type="text" class="search-input" id="socrata-token-input" placeholder="Optional X-App-Token (saved locally)" aria-label="Optional Socrata App Token">
+            <button type="button" class="btn-primary" id="run-query-btn">Fetch live feed</button>
+          </div>
+
+          <div class="query-status" id="query-status" aria-live="polite">Loading latest issued housing permits from data.seattle.gov...</div>
+
+          <div class="table-wrap" id="live-query-results-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Permit</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Class and stage</th>
+                  <th scope="col" class="num">Units</th>
+                  <th scope="col" class="num">Date</th>
+                </tr>
+              </thead>
+              <tbody id="live-query-results-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="split-grid split-52-48" id="datasets">
+          <div class="editorial-col">
+            <h2 class="block-heading">Connected SDCI Socrata datasets</h2>
+            <p class="block-desc">Direct public JSON endpoints and machine-readable mirrors used across Seattle Housing Permits Information.</p>
+            <div class="catalog-list" id="catalog-list"></div>
+
+            <h3 class="sub-heading" style="margin-top:1.5rem">Machine-readable endpoints for scripts and AI agents</h3>
+            <div class="catalog-list">
+              <div class="catalog-item">
+                <div>
+                  <a class="catalog-title" href="./data/seattle-permits-summary.json">Aggregated Seattle Permits JSON Snapshot</a>
+                  <p class="catalog-desc">Single-file JSON containing verified 2014 to 2026 trends, timelines by building type, definitions, and active pipelines.</p>
+                </div>
+                <div class="catalog-meta"><code>JSON</code></div>
+              </div>
+              <div class="catalog-item">
+                <div>
+                  <a class="catalog-title" href="./llms.txt">Concise LLM Summary (llms.txt)</a>
+                  <p class="catalog-desc">Structured Markdown briefing following the llmstxt.org standard.</p>
+                </div>
+                <div class="catalog-meta"><code>Markdown</code></div>
+              </div>
+              <div class="catalog-item">
+                <div>
+                  <a class="catalog-title" href="./llms-full.txt">Complete Data Reference (llms-full.txt)</a>
+                  <p class="catalog-desc">Full citation-ready tables, ZIP rankings, and live SoQL query templates.</p>
+                </div>
+                <div class="catalog-meta"><code>Markdown</code></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editorial-col" id="methodology">
+            <h2 class="block-heading">Data methodology and accounting notes</h2>
+            <p class="block-desc">Key statistical definitions and SDCI dataset nuances to keep in mind when citing figures.</p>
+            <div class="methodology-list">
+              <div class="method-item">
+                <h3 class="sub-heading">Mean versus median turnaround times</h3>
+                <p>Permit review durations are heavily right-skewed: simple over-the-counter permits clear in days while stalled or appealed multifamily towers can take years. Both median and mean (plus 75th and 90th percentiles) are reported side by side. Negative date artifacts (13 of 72,332 records) are excluded.</p>
+              </div>
+              <div class="method-item">
+                <h3 class="sub-heading">Site-level multi-permit unit accounting</h3>
+                <p>SDCI frequently attaches a development site's proposed <code>housingunitsadded</code> to paired demolition (<code>-DM</code>), shoring, and phased construction (<code>-PH</code>) permits. Active review totals reflect raw SDCI permit rows; the major developments ledger defaults to building permits only to reduce double counting.</p>
+              </div>
+              <div class="method-item">
+                <h3 class="sub-heading">2026 year-to-date completion bias</h3>
+                <p>Construction duration (issued to completed) for permits issued in 2026 (104.8d mean) only reflects fast-finishing projects already completed within the same calendar year. Use 2016 to 2023 cohorts for unbiased construction duration benchmarks.</p>
+              </div>
+              <div class="method-item">
+                <h3 class="sub-heading">SoQL date type handling</h3>
+                <p>Building Permits (<code>76t5-zqzr</code>) stores dates as floating timestamps, whereas Land Use Permits (<code>ht3q-kdvx</code>) and Trade Permits (<code>c87v-5hwh</code>) store <code>YYYY-MM-DD</code> strings requiring explicit <code>::floating_timestamp</code> casts in live SoQL queries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Seattle Housing Permits Information</div>
+      <div class="footer-links" aria-label="Site and data resources">
+        <a href="./index.html">Overview &amp; Report</a>
+        <a href="https://data.seattle.gov/d/76t5-zqzr" target="_blank" rel="noopener noreferrer">Seattle SDCI Open Data</a>
+        <a href="./data/seattle-permits-summary.json">JSON Data</a>
+        <a href="./llms.txt">llms.txt</a>
+        <a href="./sitemap.xml">sitemap.xml</a>
+      </div>
+      <div class="footer-note">Independent civic analytics sourced from City of Seattle Open Data (<code>data.seattle.gov</code>).</div>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/feed.js"></script>
+</body>
+</html>

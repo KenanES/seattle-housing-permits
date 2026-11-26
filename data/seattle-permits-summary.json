@@ -1,0 +1,3338 @@
+{
+  "schemaVersion": "1.0",
+  "siteName": "Seattle Housing Permits Information",
+  "canonicalUrl": "https://seattlepermits.org/",
+  "description": "Machine-readable summary of Seattle building permits, land use Master Use Permits, trade permits, housing units under construction, and 2014 to 2026 historical trends from City of Seattle SDCI Open Data.",
+  "llmsTxt": "https://seattlepermits.org/llms.txt",
+  "llmsFullTxt": "https://seattlepermits.org/llms-full.txt",
+  "liveApiEndpoints": {
+    "buildingPermits": "https://data.seattle.gov/resource/76t5-zqzr.json",
+    "landUsePermits": "https://data.seattle.gov/resource/ht3q-kdvx.json",
+    "tradePermits": "https://data.seattle.gov/resource/c87v-5hwh.json",
+    "planReview": "https://data.seattle.gov/resource/tqk8-y2z5.json",
+    "permitReviewTimeData": "https://data.seattle.gov/resource/crg2-ssqd.json"
+  },
+  "definitions": {
+    "permitTypes": {
+      "building": "Structural construction, new houses, apartments, additions, remodels, shoring, and demolitions reviewed for building code safety (76t5-zqzr).",
+      "landUse": "Master Use Permits (MUPs), zoning approvals, design review, environmental review, and lot subdivisions required before building larger or complex projects (ht3q-kdvx).",
+      "trade": "Mechanical (HVAC), electrical, plumbing and side sewer, boiler, elevator, and refrigeration systems installed inside or connected to buildings (c87v-5hwh)."
+    },
+    "housingCategories": {
+      "Large Multifamily": "Mid-rise and high-rise apartment, condominium, and mixed-use residential buildings with larger unit counts.",
+      "Middle Housing": "Townhomes, duplexes, triplexes, fourplexes, stacked flats, and cottage housing between single-family homes and large apartments.",
+      "Single-Family Add/Alt": "Additions, interior remodels, basement conversions, and attached accessory dwelling units (ADUs) on single-family lots.",
+      "Commercial Add/Alt": "Tenant improvements, structural remodels, and residential-over-retail conversions inside commercial buildings.",
+      "Pre-Approved DADU Plans": "Detached backyard cottages (detached accessory dwelling units) built using SDCI fast-track pre-reviewed plan library.",
+      "Multifamily (Other)": "Live-work conversions, congregate residences, boarding houses, and specialized multifamily alterations."
+    }
+  },
+  "typologyTimelinesDays2016To2026": {
+    "singleFamilyAndTownhomes": {
+      "sdciClass": "Single Family/Duplex",
+      "issuedSample": 45256,
+      "buildingReviewMedian": 40,
+      "buildingReviewMean": 105.8,
+      "constructionMedian": 296,
+      "constructionMean": 354.2,
+      "landUseMupMedian": 245,
+      "landUseMupMean": 355.8
+    },
+    "multifamilyApartments": {
+      "sdciClass": "Multifamily",
+      "issuedSample": 8274,
+      "buildingReviewMedian": 155,
+      "buildingReviewMean": 232.2,
+      "landUseMupMedian": 318,
+      "landUseMupMean": 404.9,
+      "constructionMedian": 409,
+      "constructionMean": 467.6
+    },
+    "businessBuildings": {
+      "sdciClass": "Commercial (+ Industrial)",
+      "commercialIssuedSample": 15023,
+      "industrialIssuedSample": 742,
+      "commercialReviewMedian": 46,
+      "commercialReviewMean": 96.3,
+      "commercialBuildOutMedian": 169,
+      "commercialBuildOutMean": 271.9,
+      "commercialLandUseMupMedian": 356,
+      "commercialLandUseMupMean": 532.3,
+      "industrialReviewMedian": 90.5,
+      "industrialReviewMean": 151.6
+    }
+  },
+  "meta": {
+    "fetchedAt": "2026-11-25T23:25:00Z",
+    "source": "City of Seattle Open Data Portal (data.seattle.gov)",
+    "bpLastModified": "Nov 25, 2026",
+    "bpLatestApplied": "2026-11-23",
+    "bpLatestIssued": "2026-11-23",
+    "luLastModified": "Nov 25, 2026",
+    "luLatestApplied": "2026-11-23",
+    "luLatestIssued": "2026-11-18",
+    "tradeTotalRows": 291125,
+    "planReviewTotalRows": 349866,
+    "permitReviewTimeTotalRows": 550226
+  },
+  "buildingPermits": {
+    "byAppliedYear": [
+      {
+        "yr": 2014,
+        "cnt": 7659,
+        "units_added": 10115,
+        "units_removed": 731,
+        "total_cost": 3465569661
+      },
+      {
+        "yr": 2015,
+        "cnt": 8093,
+        "units_added": 11303,
+        "units_removed": 715,
+        "total_cost": 3829977725
+      },
+      {
+        "yr": 2016,
+        "cnt": 8457,
+        "units_added": 16680,
+        "units_removed": 830,
+        "total_cost": 6684281088
+      },
+      {
+        "yr": 2017,
+        "cnt": 8591,
+        "units_added": 10586,
+        "units_removed": 1181,
+        "total_cost": 4006512103
+      },
+      {
+        "yr": 2018,
+        "cnt": 8409,
+        "units_added": 11206,
+        "units_removed": 637,
+        "total_cost": 4753162093
+      },
+      {
+        "yr": 2019,
+        "cnt": 7646,
+        "units_added": 11602,
+        "units_removed": 617,
+        "total_cost": 4504000548
+      },
+      {
+        "yr": 2020,
+        "cnt": 6550,
+        "units_added": 22916,
+        "units_removed": 553,
+        "total_cost": 8139689018
+      },
+      {
+        "yr": 2021,
+        "cnt": 7056,
+        "units_added": 17107,
+        "units_removed": 562,
+        "total_cost": 5947640281
+      },
+      {
+        "yr": 2022,
+        "cnt": 6770,
+        "units_added": 18073,
+        "units_removed": 701,
+        "total_cost": 5260603488
+      },
+      {
+        "yr": 2023,
+        "cnt": 5603,
+        "units_added": 13193,
+        "units_removed": 550,
+        "total_cost": 6028130749
+      },
+      {
+        "yr": 2024,
+        "cnt": 6064,
+        "units_added": 8266,
+        "units_removed": 526,
+        "total_cost": 6842537001
+      },
+      {
+        "yr": 2025,
+        "cnt": 6257,
+        "units_added": 5543,
+        "units_removed": 648,
+        "total_cost": 4467824664
+      },
+      {
+        "yr": 2026,
+        "cnt": 5684,
+        "units_added": 3587,
+        "units_removed": 695,
+        "total_cost": 4731496584
+      }
+    ],
+    "byIssuedYear": [
+      {
+        "yr": 2014,
+        "cnt": 7352,
+        "units_added": 8869,
+        "units_removed": 651,
+        "total_cost": 3431508308
+      },
+      {
+        "yr": 2015,
+        "cnt": 7572,
+        "units_added": 11932,
+        "units_removed": 543,
+        "total_cost": 3744878016
+      },
+      {
+        "yr": 2016,
+        "cnt": 8042,
+        "units_added": 11021,
+        "units_removed": 766,
+        "total_cost": 3401507645
+      },
+      {
+        "yr": 2017,
+        "cnt": 8051,
+        "units_added": 11210,
+        "units_removed": 1029,
+        "total_cost": 4688715467
+      },
+      {
+        "yr": 2018,
+        "cnt": 7570,
+        "units_added": 8974,
+        "units_removed": 599,
+        "total_cost": 3670987339
+      },
+      {
+        "yr": 2019,
+        "cnt": 7825,
+        "units_added": 11615,
+        "units_removed": 624,
+        "total_cost": 4715854940
+      },
+      {
+        "yr": 2020,
+        "cnt": 6161,
+        "units_added": 10374,
+        "units_removed": 579,
+        "total_cost": 3279390734
+      },
+      {
+        "yr": 2021,
+        "cnt": 6531,
+        "units_added": 16123,
+        "units_removed": 409,
+        "total_cost": 5885225828
+      },
+      {
+        "yr": 2022,
+        "cnt": 6446,
+        "units_added": 12989,
+        "units_removed": 453,
+        "total_cost": 4396977038
+      },
+      {
+        "yr": 2023,
+        "cnt": 5848,
+        "units_added": 7940,
+        "units_removed": 541,
+        "total_cost": 4613455142
+      },
+      {
+        "yr": 2024,
+        "cnt": 5853,
+        "units_added": 8920,
+        "units_removed": 423,
+        "total_cost": 3735417173
+      },
+      {
+        "yr": 2025,
+        "cnt": 6334,
+        "units_added": 8972,
+        "units_removed": 563,
+        "total_cost": 6847453905
+      },
+      {
+        "yr": 2026,
+        "cnt": 5814,
+        "units_added": 4442,
+        "units_removed": 657,
+        "total_cost": 4206529637
+      }
+    ],
+    "byStatus": [
+      {
+        "status": "Completed",
+        "cnt": 135225,
+        "units_added": 144778,
+        "units_removed": 10507,
+        "total_cost": 68688434899
+      },
+      {
+        "status": "Expired",
+        "cnt": 13949,
+        "units_added": 14710,
+        "units_removed": 917,
+        "total_cost": 5773626724
+      },
+      {
+        "status": "Additional Info Requested",
+        "cnt": 10365,
+        "units_added": 36425,
+        "units_removed": 2711,
+        "total_cost": 94001153084
+      },
+      {
+        "status": "Closed",
+        "cnt": 8967,
+        "units_added": 186,
+        "units_removed": 629,
+        "total_cost": 551170230
+      },
+      {
+        "status": "Issued",
+        "cnt": 8117,
+        "units_added": 18197,
+        "units_removed": 783,
+        "total_cost": 10489860229
+      },
+      {
+        "status": "Withdrawn",
+        "cnt": 5265,
+        "units_added": 15846,
+        "units_removed": 644,
+        "total_cost": 11383179012
+      },
+      {
+        "status": "Canceled",
+        "cnt": 4580,
+        "units_added": 5055,
+        "units_removed": 281,
+        "total_cost": 3452326854
+      },
+      {
+        "status": "Corrections Required",
+        "cnt": 2126,
+        "units_added": 12813,
+        "units_removed": 358,
+        "total_cost": 3756768644
+      },
+      {
+        "status": "Scheduled",
+        "cnt": 1864,
+        "units_added": 3084,
+        "units_removed": 214,
+        "total_cost": 4360824148
+      },
+      {
+        "status": "Ready for Issuance",
+        "cnt": 728,
+        "units_added": 1997,
+        "units_removed": 156,
+        "total_cost": 1435256807
+      },
+      {
+        "status": "Application Completed",
+        "cnt": 725,
+        "units_added": 1259,
+        "units_removed": 142,
+        "total_cost": 348344015
+      },
+      {
+        "status": "Reviews In Process",
+        "cnt": 541,
+        "units_added": 8176,
+        "units_removed": 192,
+        "total_cost": 7011246994
+      },
+      {
+        "status": "Awaiting Information",
+        "cnt": 517,
+        "units_added": 531,
+        "units_removed": 121,
+        "total_cost": 252316716
+      },
+      {
+        "status": "Reviews Completed",
+        "cnt": 475,
+        "units_added": 308,
+        "units_removed": 209,
+        "total_cost": 459638008
+      },
+      {
+        "status": "Ready for Intake",
+        "cnt": 294,
+        "units_added": 331,
+        "units_removed": 32,
+        "total_cost": 158386816
+      },
+      {
+        "status": "Active",
+        "cnt": 268,
+        "units_added": 0,
+        "units_removed": 0,
+        "total_cost": 175985302
+      },
+      {
+        "status": "Initiated",
+        "cnt": 227,
+        "units_added": 26,
+        "units_removed": 9,
+        "total_cost": 147010881
+      },
+      {
+        "status": "Inspections Completed",
+        "cnt": 139,
+        "units_added": 151,
+        "units_removed": 1,
+        "total_cost": 34193750
+      },
+      {
+        "status": "Corrections Submitted",
+        "cnt": 38,
+        "units_added": 109,
+        "units_removed": 2,
+        "total_cost": 121440975
+      },
+      {
+        "status": "Approved to Occupy",
+        "cnt": 26,
+        "units_added": 704,
+        "units_removed": 0,
+        "total_cost": 214514533
+      },
+      {
+        "status": "Scheduled and Submitted",
+        "cnt": 23,
+        "units_added": 5,
+        "units_removed": 1,
+        "total_cost": 7388342
+      },
+      {
+        "status": "Phase Issued",
+        "cnt": 11,
+        "units_added": 1548,
+        "units_removed": 5,
+        "total_cost": 770364319
+      }
+    ],
+    "byClassActive": [
+      {
+        "permitclass": "Multifamily",
+        "mapped": "Residential",
+        "cnt": 4019,
+        "units_added": 63862,
+        "units_removed": 3396,
+        "total_cost": 79389219572
+      },
+      {
+        "permitclass": "Commercial",
+        "mapped": "Non-Residential",
+        "cnt": 5238,
+        "units_added": 11785,
+        "units_removed": 115,
+        "total_cost": 23521909357
+      },
+      {
+        "permitclass": "Single Family/Duplex",
+        "mapped": "Residential",
+        "cnt": 14730,
+        "units_added": 8072,
+        "units_removed": 1411,
+        "total_cost": 4742935905
+      },
+      {
+        "permitclass": "Institutional",
+        "mapped": "Non-Residential",
+        "cnt": 895,
+        "units_added": 1253,
+        "units_removed": 11,
+        "total_cost": 8379723185
+      },
+      {
+        "permitclass": "Industrial",
+        "mapped": "Non-Residential",
+        "cnt": 560,
+        "units_added": 365,
+        "units_removed": 0,
+        "total_cost": 7538728999
+      },
+      {
+        "permitclass": "Vacant Land",
+        "mapped": "Non-Residential",
+        "cnt": 203,
+        "units_added": 327,
+        "units_removed": 1,
+        "total_cost": 172094546
+      }
+    ],
+    "byHousingCategory2020": [
+      {
+        "category": "Large Multifamily",
+        "cnt": 276,
+        "units_added": 22227,
+        "units_removed": 6
+      },
+      {
+        "category": "Middle Housing",
+        "cnt": 5439,
+        "units_added": 12338,
+        "units_removed": 16
+      },
+      {
+        "category": "Single-Family Add/Alt",
+        "cnt": 17709,
+        "units_added": 948,
+        "units_removed": 93
+      },
+      {
+        "category": "Commercial Add/Alt",
+        "cnt": 5982,
+        "units_added": 433,
+        "units_removed": 67
+      },
+      {
+        "category": "Pre-Approved DADU Plans",
+        "cnt": 291,
+        "units_added": 335,
+        "units_removed": 0
+      },
+      {
+        "category": "Multifamily (Other)",
+        "cnt": 69,
+        "units_added": 129,
+        "units_removed": 0
+      },
+      {
+        "category": "Unclassified / Legacy Tag",
+        "cnt": 14218,
+        "units_added": 52275,
+        "units_removed": 4053
+      }
+    ],
+    "processingTimes": {
+      "sampleSize": 72319,
+      "byYear": {
+        "2016": {
+          "app_to_iss": {
+            "n": 8042,
+            "mean": 82.2,
+            "median": 38,
+            "p75": 113,
+            "p90": 217
+          },
+          "iss_to_comp": {
+            "n": 6673,
+            "mean": 337.3,
+            "median": 258,
+            "p75": 497,
+            "p90": 666
+          }
+        },
+        "2017": {
+          "app_to_iss": {
+            "n": 8051,
+            "mean": 88.1,
+            "median": 34,
+            "p75": 120,
+            "p90": 249
+          },
+          "iss_to_comp": {
+            "n": 6134,
+            "mean": 335.1,
+            "median": 230,
+            "p75": 457,
+            "p90": 700
+          }
+        },
+        "2018": {
+          "app_to_iss": {
+            "n": 7521,
+            "mean": 99.8,
+            "median": 26,
+            "p75": 149,
+            "p90": 294
+          },
+          "iss_to_comp": {
+            "n": 5699,
+            "mean": 357.6,
+            "median": 260,
+            "p75": 476,
+            "p90": 735
+          }
+        },
+        "2019": {
+          "app_to_iss": {
+            "n": 7714,
+            "mean": 113.8,
+            "median": 45,
+            "p75": 157,
+            "p90": 335
+          },
+          "iss_to_comp": {
+            "n": 5873,
+            "mean": 362.9,
+            "median": 273,
+            "p75": 522,
+            "p90": 740
+          }
+        },
+        "2020": {
+          "app_to_iss": {
+            "n": 6022,
+            "mean": 130.2,
+            "median": 46,
+            "p75": 163,
+            "p90": 376
+          },
+          "iss_to_comp": {
+            "n": 4454,
+            "mean": 419,
+            "median": 321,
+            "p75": 538,
+            "p90": 903
+          }
+        },
+        "2021": {
+          "app_to_iss": {
+            "n": 6258,
+            "mean": 125.1,
+            "median": 51,
+            "p75": 154,
+            "p90": 331
+          },
+          "iss_to_comp": {
+            "n": 4718,
+            "mean": 419.5,
+            "median": 350.5,
+            "p75": 540,
+            "p90": 919
+          }
+        },
+        "2022": {
+          "app_to_iss": {
+            "n": 6201,
+            "mean": 138.8,
+            "median": 62,
+            "p75": 184,
+            "p90": 349
+          },
+          "iss_to_comp": {
+            "n": 4702,
+            "mean": 405.1,
+            "median": 364,
+            "p75": 540,
+            "p90": 811
+          }
+        },
+        "2023": {
+          "app_to_iss": {
+            "n": 5627,
+            "mean": 147.3,
+            "median": 68,
+            "p75": 194,
+            "p90": 363
+          },
+          "iss_to_comp": {
+            "n": 4291,
+            "mean": 353.8,
+            "median": 310,
+            "p75": 520,
+            "p90": 693
+          }
+        },
+        "2024": {
+          "app_to_iss": {
+            "n": 5565,
+            "mean": 155,
+            "median": 54,
+            "p75": 159,
+            "p90": 400
+          },
+          "iss_to_comp": {
+            "n": 4165,
+            "mean": 305,
+            "median": 273,
+            "p75": 461,
+            "p90": 569
+          }
+        },
+        "2025": {
+          "app_to_iss": {
+            "n": 5913,
+            "mean": 139,
+            "median": 63,
+            "p75": 161,
+            "p90": 313
+          },
+          "iss_to_comp": {
+            "n": 3793,
+            "mean": 230.8,
+            "median": 209,
+            "p75": 335,
+            "p90": 458
+          }
+        },
+        "2026": {
+          "app_to_iss": {
+            "n": 5402,
+            "mean": 122.4,
+            "median": 58.5,
+            "p75": 156,
+            "p90": 261
+          },
+          "iss_to_comp": {
+            "n": 1379,
+            "mean": 104.8,
+            "median": 96,
+            "p75": 155,
+            "p90": 202
+          }
+        }
+      },
+      "byClass": {
+        "Multifamily": {
+          "app_to_iss": {
+            "n": 8274,
+            "mean": 232.2,
+            "median": 155,
+            "p75": 320,
+            "p90": 550
+          },
+          "iss_to_comp": {
+            "n": 5913,
+            "mean": 467.6,
+            "median": 409,
+            "p75": 604,
+            "p90": 943
+          }
+        },
+        "Vacant Land": {
+          "app_to_iss": {
+            "n": 157,
+            "mean": 196.2,
+            "median": 113,
+            "p75": 304,
+            "p90": 523
+          },
+          "iss_to_comp": {
+            "n": 66,
+            "mean": 450.7,
+            "median": 369,
+            "p75": 580,
+            "p90": 966
+          }
+        },
+        "Industrial": {
+          "app_to_iss": {
+            "n": 742,
+            "mean": 151.6,
+            "median": 90.5,
+            "p75": 182,
+            "p90": 352
+          },
+          "iss_to_comp": {
+            "n": 422,
+            "mean": 386.1,
+            "median": 275.5,
+            "p75": 539,
+            "p90": 783
+          }
+        },
+        "Institutional": {
+          "app_to_iss": {
+            "n": 2245,
+            "mean": 126.3,
+            "median": 68,
+            "p75": 162,
+            "p90": 293
+          },
+          "iss_to_comp": {
+            "n": 1621,
+            "mean": 341.2,
+            "median": 242,
+            "p75": 505,
+            "p90": 757
+          }
+        },
+        "Single Family/Duplex": {
+          "app_to_iss": {
+            "n": 45256,
+            "mean": 105.8,
+            "median": 40,
+            "p75": 140,
+            "p90": 274
+          },
+          "iss_to_comp": {
+            "n": 32494,
+            "mean": 354.2,
+            "median": 296,
+            "p75": 496,
+            "p90": 674
+          }
+        },
+        "Commercial": {
+          "app_to_iss": {
+            "n": 15023,
+            "mean": 96.3,
+            "median": 46,
+            "p75": 107,
+            "p90": 232
+          },
+          "iss_to_comp": {
+            "n": 10804,
+            "mean": 271.9,
+            "median": 169,
+            "p75": 350,
+            "p90": 564
+          }
+        }
+      }
+    },
+    "top25BuildingActive": [
+      {
+        "permitnum": "6957110-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "3020 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 734,
+        "housingunitsremoved": 0,
+        "estprojectcost": 170055127,
+        "applieddate": "2023-08-14",
+        "issueddate": "2025-10-01",
+        "latitude": 47.662055,
+        "longitude": -122.295462,
+        "description": "Phased project: Construct residential/commercial building with three residential towers above podium and below grade parking, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6957110-PH"
+      },
+      {
+        "permitnum": "6905992-PH",
+        "permitclass": "Commercial",
+        "permittypemapped": "Building",
+        "statuscurrent": "Phase Issued",
+        "originaladdress1": "121 BOREN AVE N",
+        "originalzip": "98109",
+        "housingunitsadded": 478,
+        "housingunitsremoved": 0,
+        "estprojectcost": 112209560,
+        "applieddate": "2023-02-15",
+        "issueddate": "2025-09-02",
+        "latitude": 47.619072,
+        "longitude": -122.336525,
+        "description": "Phased project: Construction of residential/retail high rise building, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6905992-PH"
+      },
+      {
+        "permitnum": "6911575-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "2405 7TH AVE",
+        "originalzip": "98121",
+        "housingunitsadded": 442,
+        "housingunitsremoved": 0,
+        "estprojectcost": 137882688,
+        "applieddate": "2022-12-16",
+        "issueddate": "2024-03-26",
+        "latitude": 47.618066,
+        "longitude": -122.343302,
+        "description": "Phased project: Construction of residential/retail high rise with below grade parking and occupy per plan. Mechanical is included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6911575-PH"
+      },
+      {
+        "permitnum": "6878370-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "2705 S HANFORD ST",
+        "originalzip": "98144",
+        "housingunitsadded": 425,
+        "housingunitsremoved": 0,
+        "estprojectcost": 4000000,
+        "applieddate": "2023-06-05",
+        "issueddate": "",
+        "latitude": 47.574843,
+        "longitude": -122.297889,
+        "description": "Shoring and excavation for mixed-use apartment building per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6878370-CN"
+      },
+      {
+        "permitnum": "7002565-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "1203 E SPRUCE ST",
+        "originalzip": "98122",
+        "housingunitsadded": 400,
+        "housingunitsremoved": 0,
+        "estprojectcost": 69520520,
+        "applieddate": "2024-02-26",
+        "issueddate": "",
+        "latitude": 47.603345,
+        "longitude": -122.316358,
+        "description": "Phased project: Construct mixed-use apartment building with below-grade parking, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7002565-PH"
+      },
+      {
+        "permitnum": "6899871-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "1032 S JACKSON ST",
+        "originalzip": "98104",
+        "housingunitsadded": 397,
+        "housingunitsremoved": 0,
+        "estprojectcost": 72845044,
+        "applieddate": "2022-10-24",
+        "issueddate": "",
+        "latitude": 47.5995,
+        "longitude": -122.31852,
+        "description": "Phased project: Construction of residential/retail building and occupy per plan. Mechanical is included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6899871-PH"
+      },
+      {
+        "permitnum": "6868801-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Ready for Issuance",
+        "originaladdress1": "13711 AURORA AVE N",
+        "originalzip": "98133",
+        "housingunitsadded": 384,
+        "housingunitsremoved": 0,
+        "estprojectcost": 48245159,
+        "applieddate": "2023-12-14",
+        "issueddate": "",
+        "latitude": 47.729196,
+        "longitude": -122.345549,
+        "description": "Establish new multifamily structure (apartment building) with live-work units and commercial at ground floor. Construct mixed-use building (Bode Bitter Lake).",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6868801-CN"
+      },
+      {
+        "permitnum": "6906292-PH",
+        "permitclass": "Commercial",
+        "permittypemapped": "Building",
+        "statuscurrent": "Additional Info Requested",
+        "originaladdress1": "1013 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 370,
+        "housingunitsremoved": 0,
+        "estprojectcost": 75000000,
+        "applieddate": "2022-06-01",
+        "issueddate": "",
+        "latitude": 47.660993,
+        "longitude": -122.317071,
+        "description": "Phased project: Construct mixed-use high-rise building with below-grade parking, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6906292-PH"
+      },
+      {
+        "permitnum": "6944660-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "5960 M L KING JR WAY S",
+        "originalzip": "98118",
+        "housingunitsadded": 367,
+        "housingunitsremoved": 0,
+        "estprojectcost": 38459625,
+        "applieddate": "2024-03-04",
+        "issueddate": "",
+        "latitude": 47.54792,
+        "longitude": -122.285476,
+        "description": "Establish use as apartment per land use code. Construct new multifamily building, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6944660-CN"
+      },
+      {
+        "permitnum": "6806487-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "1370 STEWART ST",
+        "originalzip": "98109",
+        "housingunitsadded": 340,
+        "housingunitsremoved": 0,
+        "estprojectcost": 120108956,
+        "applieddate": "2021-03-02",
+        "issueddate": "",
+        "latitude": 47.619545,
+        "longitude": -122.330268,
+        "description": "Phased project: Construct mixed-use residential high-rise building with below-grade parking, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6806487-PH"
+      },
+      {
+        "permitnum": "6905972-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "301 15TH AVE E",
+        "originalzip": "98112",
+        "housingunitsadded": 337,
+        "housingunitsremoved": 0,
+        "estprojectcost": 76304980,
+        "applieddate": "2023-03-24",
+        "issueddate": "",
+        "latitude": 47.620802,
+        "longitude": -122.313032,
+        "description": "Phased project: Construction of residential/retail building with below grade parking and occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6905972-PH"
+      },
+      {
+        "permitnum": "7065642-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "9750 3RD AVE NE",
+        "originalzip": "98115",
+        "housingunitsadded": 302,
+        "housingunitsremoved": 0,
+        "estprojectcost": 70146374,
+        "applieddate": "2025-08-13",
+        "issueddate": "",
+        "latitude": 47.700636,
+        "longitude": -122.32488,
+        "description": "Construct new multifamily building, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7065642-CN"
+      },
+      {
+        "permitnum": "6922216-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "1601 E YESLER WAY",
+        "originalzip": "98122",
+        "housingunitsadded": 285,
+        "housingunitsremoved": 48,
+        "estprojectcost": 28136882,
+        "applieddate": "2024-11-04",
+        "issueddate": "",
+        "latitude": 47.601334,
+        "longitude": -122.310899,
+        "description": "Construct mixed-use building per plan (replacing 48 existing units).",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6922216-CN"
+      },
+      {
+        "permitnum": "6899884-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "6716 ROOSEVELT WAY NE",
+        "originalzip": "98115",
+        "housingunitsadded": 244,
+        "housingunitsremoved": 0,
+        "estprojectcost": 47289457,
+        "applieddate": "2022-09-08",
+        "issueddate": "2024-12-11",
+        "latitude": 47.677769,
+        "longitude": -122.31701,
+        "description": "Phased project: Establish use as apartment per land use code. Construct new mixed-use building, occupy per plan. Mechanical included in Phase 2.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6899884-PH"
+      },
+      {
+        "permitnum": "6949207-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews Completed",
+        "originaladdress1": "920 NE 42ND ST",
+        "originalzip": "98105",
+        "housingunitsadded": 244,
+        "housingunitsremoved": 0,
+        "estprojectcost": 47762684,
+        "applieddate": "2024-03-20",
+        "issueddate": "",
+        "latitude": 47.657678,
+        "longitude": -122.318161,
+        "description": "Construct a mixed-use high-rise building, occupy per plans. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6949207-CN"
+      },
+      {
+        "permitnum": "7046346-CN",
+        "permitclass": "Commercial",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "2929 27TH AVE S",
+        "originalzip": "98144",
+        "housingunitsadded": 241,
+        "housingunitsremoved": 0,
+        "estprojectcost": 69876675,
+        "applieddate": "2025-09-25",
+        "issueddate": "2026-10-08",
+        "latitude": 47.577014,
+        "longitude": -122.298734,
+        "description": "Construct new mixed-use building, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7046346-CN"
+      },
+      {
+        "permitnum": "7076363-PH",
+        "permitclass": "Vacant Land",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "1740 NW MARKET ST",
+        "originalzip": "98107",
+        "housingunitsadded": 239,
+        "housingunitsremoved": 0,
+        "estprojectcost": 52638258,
+        "applieddate": "2025-07-24",
+        "issueddate": "2026-05-29",
+        "latitude": 47.668948,
+        "longitude": -122.380916,
+        "description": "Phased project: Construct mixed-use apartment building with below-grade parking, occupy per plan. Mechanical included with Phase 2.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7076363-PH"
+      },
+      {
+        "permitnum": "6839217-PH",
+        "permitclass": "Commercial",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "10523 5TH AVE NE",
+        "originalzip": "98125",
+        "housingunitsadded": 234,
+        "housingunitsremoved": 0,
+        "estprojectcost": 69300737,
+        "applieddate": "2021-06-16",
+        "issueddate": "2022-11-08",
+        "latitude": 47.706381,
+        "longitude": -122.323391,
+        "description": "Phased construction: Construct residential, retail, and parking structure and occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6839217-PH"
+      },
+      {
+        "permitnum": "6963639-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "3839 STONE WAY N",
+        "originalzip": "98103",
+        "housingunitsadded": 231,
+        "housingunitsremoved": 0,
+        "estprojectcost": 50187157,
+        "applieddate": "2023-08-18",
+        "issueddate": "2025-10-14",
+        "latitude": 47.653908,
+        "longitude": -122.343192,
+        "description": "Phased project: Construct mixed-use apartment building with below-grade parking, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6963639-PH"
+      },
+      {
+        "permitnum": "6771335-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Issued",
+        "originaladdress1": "907 NW MARKET ST",
+        "originalzip": "98107",
+        "housingunitsadded": 228,
+        "housingunitsremoved": 0,
+        "estprojectcost": 12795787,
+        "applieddate": "2021-08-20",
+        "issueddate": "2024-07-17",
+        "latitude": 47.66842,
+        "longitude": -122.369088,
+        "description": "Establish use as multifamily residential per land use code. Construct multifamily building, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6771335-CN"
+      },
+      {
+        "permitnum": "7016345-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "425 N 85TH ST",
+        "originalzip": "98103",
+        "housingunitsadded": 224,
+        "housingunitsremoved": 0,
+        "estprojectcost": 34019568,
+        "applieddate": "2024-11-01",
+        "issueddate": "",
+        "latitude": 47.690418,
+        "longitude": -122.353253,
+        "description": "Phased project: Construct mixed use apartment building with below grade parking, occupy per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7016345-PH"
+      },
+      {
+        "permitnum": "6982857-PH",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Reviews In Process",
+        "originaladdress1": "3000 WESTERN AVE",
+        "originalzip": "98121",
+        "housingunitsadded": 213,
+        "housingunitsremoved": 0,
+        "estprojectcost": 47290558,
+        "applieddate": "2023-12-27",
+        "issueddate": "",
+        "latitude": 47.617398,
+        "longitude": -122.354747,
+        "description": "Phased project: Construct residential high-rise building with below grade parking, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6982857-PH"
+      },
+      {
+        "permitnum": "6883537-CN",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Building",
+        "statuscurrent": "Approved to Occupy",
+        "originaladdress1": "14343 15TH AVE NE",
+        "originalzip": "98125",
+        "housingunitsadded": 207,
+        "housingunitsremoved": 0,
+        "estprojectcost": 35984110,
+        "applieddate": "2023-06-20",
+        "issueddate": "2024-01-18",
+        "latitude": 47.733226,
+        "longitude": -122.31309,
+        "description": "Establish use as apartment per land use code. Construct a multifamily building, occupy per plan. Mechanical included.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6883537-CN"
+      }
+    ],
+    "topDemolitionActive": [
+      {
+        "permitnum": "6873121-DM",
+        "permitclass": "Commercial",
+        "permittypemapped": "Demolition",
+        "statuscurrent": "Issued",
+        "originaladdress1": "1032 S JACKSON ST",
+        "originalzip": "98104",
+        "housingunitsadded": 450,
+        "housingunitsremoved": 0,
+        "estprojectcost": 0,
+        "applieddate": "2022-07-19",
+        "issueddate": "2024-06-10",
+        "latitude": 47.5995,
+        "longitude": -122.31852,
+        "description": "Demolish existing commercial building and parking lot per plan (paired with 6899871-PH).",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6873121-DM"
+      },
+      {
+        "permitnum": "6826951-DM",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Demolition",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "1013 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 370,
+        "housingunitsremoved": 0,
+        "estprojectcost": 75000000,
+        "applieddate": "2022-07-12",
+        "issueddate": "",
+        "latitude": 47.660993,
+        "longitude": -122.317071,
+        "description": "Demolish existing gas station and accessory car wash building per plan (paired with 6906292-PH).",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6826951-DM"
+      },
+      {
+        "permitnum": "6805905-DM",
+        "permitclass": "Industrial",
+        "permittypemapped": "Demolition",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "615 DEXTER AVE N",
+        "originalzip": "98109",
+        "housingunitsadded": 365,
+        "housingunitsremoved": 0,
+        "estprojectcost": 10000,
+        "applieddate": "2021-05-06",
+        "issueddate": "",
+        "latitude": 47.625175,
+        "longitude": -122.342789,
+        "description": "Demo commercial structure per plan.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6805905-DM"
+      },
+      {
+        "permitnum": "7065643-DM",
+        "permitclass": "Commercial",
+        "permittypemapped": "Demolition",
+        "statuscurrent": "Ready for Issuance",
+        "originaladdress1": "9750 3RD AVE NE",
+        "originalzip": "98115",
+        "housingunitsadded": 300,
+        "housingunitsremoved": 0,
+        "estprojectcost": 0,
+        "applieddate": "2025-10-10",
+        "issueddate": "",
+        "latitude": 47.700636,
+        "longitude": -122.32488,
+        "description": "Demolish commercial building maintaining adjacent paved parking areas per plans (paired with 7065642-CN).",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7065643-DM"
+      }
+    ],
+    "activeByZip": [
+      {
+        "zip": "98105",
+        "neighborhood": "University District / Laurelhurst",
+        "cnt": 206,
+        "units_added": 6685,
+        "units_removed": 297
+      },
+      {
+        "zip": "98103",
+        "neighborhood": "Fremont / Wallingford / Green Lake",
+        "cnt": 425,
+        "units_added": 6277,
+        "units_removed": 183
+      },
+      {
+        "zip": "98118",
+        "neighborhood": "Rainier Valley / Columbia City",
+        "cnt": 509,
+        "units_added": 5911,
+        "units_removed": 603
+      },
+      {
+        "zip": "98122",
+        "neighborhood": "Central District / First Hill",
+        "cnt": 220,
+        "units_added": 5653,
+        "units_removed": 306
+      },
+      {
+        "zip": "98121",
+        "neighborhood": "Belltown / Denny Triangle",
+        "cnt": 25,
+        "units_added": 5555,
+        "units_removed": 177
+      },
+      {
+        "zip": "98109",
+        "neighborhood": "South Lake Union / Queen Anne",
+        "cnt": 91,
+        "units_added": 5258,
+        "units_removed": 123
+      },
+      {
+        "zip": "98104",
+        "neighborhood": "Downtown / Pioneer Sq / CID",
+        "cnt": 31,
+        "units_added": 4709,
+        "units_removed": 179
+      },
+      {
+        "zip": "98107",
+        "neighborhood": "Ballard",
+        "cnt": 165,
+        "units_added": 4660,
+        "units_removed": 95
+      },
+      {
+        "zip": "98144",
+        "neighborhood": "Mt Baker / Beacon Hill / Judkins",
+        "cnt": 280,
+        "units_added": 4529,
+        "units_removed": 87
+      },
+      {
+        "zip": "98102",
+        "neighborhood": "Capitol Hill / Eastlake",
+        "cnt": 125,
+        "units_added": 3323,
+        "units_removed": 107
+      },
+      {
+        "zip": "98115",
+        "neighborhood": "Roosevelt / Ravenna / Wedgwood",
+        "cnt": 388,
+        "units_added": 3301,
+        "units_removed": 159
+      },
+      {
+        "zip": "98101",
+        "neighborhood": "Downtown Core / Pike-Pine",
+        "cnt": 15,
+        "units_added": 3138,
+        "units_removed": 0
+      },
+      {
+        "zip": "98125",
+        "neighborhood": "Lake City / Northgate",
+        "cnt": 335,
+        "units_added": 2937,
+        "units_removed": 58
+      },
+      {
+        "zip": "98133",
+        "neighborhood": "Bitter Lake / Greenwood",
+        "cnt": 224,
+        "units_added": 2186,
+        "units_removed": 58
+      },
+      {
+        "zip": "98108",
+        "neighborhood": "Georgetown / South Beacon Hill",
+        "cnt": 295,
+        "units_added": 1616,
+        "units_removed": 55
+      },
+      {
+        "zip": "98117",
+        "neighborhood": "Crown Hill / Sunset Hill",
+        "cnt": 373,
+        "units_added": 1520,
+        "units_removed": 83
+      },
+      {
+        "zip": "98119",
+        "neighborhood": "Queen Anne / Interbay",
+        "cnt": 174,
+        "units_added": 1312,
+        "units_removed": 104
+      },
+      {
+        "zip": "98126",
+        "neighborhood": "West Seattle / Delridge",
+        "cnt": 156,
+        "units_added": 1010,
+        "units_removed": 85
+      },
+      {
+        "zip": "98106",
+        "neighborhood": "Delridge / Highland Park",
+        "cnt": 275,
+        "units_added": 843,
+        "units_removed": 45
+      },
+      {
+        "zip": "98112",
+        "neighborhood": "Montlake / Madison Park",
+        "cnt": 135,
+        "units_added": 792,
+        "units_removed": 36
+      },
+      {
+        "zip": "98116",
+        "neighborhood": "Alki / Admiral / West Seattle",
+        "cnt": 193,
+        "units_added": 649,
+        "units_removed": 87
+      },
+      {
+        "zip": "98199",
+        "neighborhood": "Magnolia",
+        "cnt": 168,
+        "units_added": 582,
+        "units_removed": 49
+      },
+      {
+        "zip": "98134",
+        "neighborhood": "SoDo / Industrial District",
+        "cnt": 2,
+        "units_added": 525,
+        "units_removed": 0
+      },
+      {
+        "zip": "98136",
+        "neighborhood": "Fauntleroy / Gatewood",
+        "cnt": 176,
+        "units_added": 405,
+        "units_removed": 44
+      },
+      {
+        "zip": "98177",
+        "neighborhood": "Blue Ridge / Broadview",
+        "cnt": 100,
+        "units_added": 213,
+        "units_removed": 37
+      }
+    ],
+    "mapPoints": [
+      {
+        "permitnum": "6706025-PH",
+        "lat": 47.617319,
+        "lng": -122.342747,
+        "units": 891,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "7009842-CN",
+        "lat": 47.548804,
+        "lng": -122.286076,
+        "units": 746,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "6957110-PH",
+        "lat": 47.662055,
+        "lng": -122.295462,
+        "units": 734,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6492105-PH",
+        "lat": 47.618008,
+        "lng": -122.331994,
+        "units": 571,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6753287-PH",
+        "lat": 47.615245,
+        "lng": -122.335207,
+        "units": 567,
+        "status": "Reviews In Process",
+        "permitclass": "Commercial",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6516420-PH",
+        "lat": 47.6069,
+        "lng": -122.324881,
+        "units": 486,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6905992-PH",
+        "lat": 47.619072,
+        "lng": -122.336525,
+        "units": 478,
+        "status": "Phase Issued",
+        "permitclass": "Commercial",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6699510-PH",
+        "lat": 47.614126,
+        "lng": -122.340393,
+        "units": 461,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6911575-PH",
+        "lat": 47.618066,
+        "lng": -122.343302,
+        "units": 442,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6713303-PH",
+        "lat": 47.618014,
+        "lng": -122.332009,
+        "units": 440,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6878370-CN",
+        "lat": 47.574843,
+        "lng": -122.297889,
+        "units": 425,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98144"
+      },
+      {
+        "permitnum": "6753306-PH",
+        "lat": 47.603363,
+        "lng": -122.3312,
+        "units": 422,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6740026-PH",
+        "lat": 47.619511,
+        "lng": -122.336963,
+        "units": 415,
+        "status": "Reviews In Process",
+        "permitclass": "Commercial",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6507024-PH",
+        "lat": 47.615044,
+        "lng": -122.332355,
+        "units": 404,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "7002565-PH",
+        "lat": 47.603345,
+        "lng": -122.316358,
+        "units": 400,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "6878124-PH",
+        "lat": 47.613353,
+        "lng": -122.341312,
+        "units": 400,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6899871-PH",
+        "lat": 47.5995,
+        "lng": -122.31852,
+        "units": 397,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6721757-CN",
+        "lat": 47.595659,
+        "lng": -122.324156,
+        "units": 390,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98134"
+      },
+      {
+        "permitnum": "6868801-CN",
+        "lat": 47.729196,
+        "lng": -122.345549,
+        "units": 384,
+        "status": "Ready for Issuance",
+        "permitclass": "Multifamily",
+        "zip": "98133"
+      },
+      {
+        "permitnum": "6906292-PH",
+        "lat": 47.660993,
+        "lng": -122.317071,
+        "units": 370,
+        "status": "Additional Info Requested",
+        "permitclass": "Commercial",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6944660-CN",
+        "lat": 47.54792,
+        "lng": -122.285476,
+        "units": 367,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "6771380-CN",
+        "lat": 47.625175,
+        "lng": -122.342789,
+        "units": 365,
+        "status": "Scheduled",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6769232-PH",
+        "lat": 47.60131,
+        "lng": -122.322729,
+        "units": 352,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6754625-CN",
+        "lat": 47.662079,
+        "lng": -122.318739,
+        "units": 350,
+        "status": "Scheduled",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6696687-CN",
+        "lat": 47.611811,
+        "lng": -122.322372,
+        "units": 350,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6740357-CN",
+        "lat": 47.661606,
+        "lng": -122.313942,
+        "units": 342,
+        "status": "Corrections Required",
+        "permitclass": "Commercial",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6806487-PH",
+        "lat": 47.619545,
+        "lng": -122.330268,
+        "units": 340,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6905972-PH",
+        "lat": 47.620802,
+        "lng": -122.313032,
+        "units": 337,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98112"
+      },
+      {
+        "permitnum": "6814613-CN",
+        "lat": 47.718846,
+        "lng": -122.34243,
+        "units": 329,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98133"
+      },
+      {
+        "permitnum": "7065642-CN",
+        "lat": 47.700636,
+        "lng": -122.32488,
+        "units": 302,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "7168109-CN",
+        "lat": 47.635498,
+        "lng": -122.341047,
+        "units": 300,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6743157-CN",
+        "lat": 47.656985,
+        "lng": -122.314926,
+        "units": 300,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6922216-CN",
+        "lat": 47.601334,
+        "lng": -122.310899,
+        "units": 285,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "6736393-CN",
+        "lat": 47.615658,
+        "lng": -122.343872,
+        "units": 285,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6588366-PH",
+        "lat": 47.619901,
+        "lng": -122.340007,
+        "units": 278,
+        "status": "Phase Issued",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "7097063-CN",
+        "lat": 47.619862,
+        "lng": -122.344144,
+        "units": 274,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6777646-CN",
+        "lat": 47.564583,
+        "lng": -122.287803,
+        "units": 263,
+        "status": "Corrections Required",
+        "permitclass": "Commercial",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "6603646-CN",
+        "lat": 47.629467,
+        "lng": -122.342628,
+        "units": 252,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6766235-PH",
+        "lat": 47.605049,
+        "lng": -122.338566,
+        "units": 246,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6899884-PH",
+        "lat": 47.677769,
+        "lng": -122.31701,
+        "units": 244,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "6949207-CN",
+        "lat": 47.657678,
+        "lng": -122.318161,
+        "units": 244,
+        "status": "Reviews Completed",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6462925-PH",
+        "lat": 47.622873,
+        "lng": -122.340019,
+        "units": 242,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "7046346-CN",
+        "lat": 47.577014,
+        "lng": -122.298734,
+        "units": 241,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98144"
+      },
+      {
+        "permitnum": "7076363-PH",
+        "lat": 47.668948,
+        "lng": -122.380916,
+        "units": 239,
+        "status": "Issued",
+        "permitclass": "Vacant Land",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6777619-CN",
+        "lat": 47.652316,
+        "lng": -122.342878,
+        "units": 236,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6839217-PH",
+        "lat": 47.706381,
+        "lng": -122.323391,
+        "units": 234,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "6963639-PH",
+        "lat": 47.653908,
+        "lng": -122.343192,
+        "units": 231,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6913470-CN",
+        "lat": 47.719488,
+        "lng": -122.29381,
+        "units": 228,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "6771335-CN",
+        "lat": 47.66842,
+        "lng": -122.369088,
+        "units": 228,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "7016345-PH",
+        "lat": 47.690418,
+        "lng": -122.353253,
+        "units": 224,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "7090123-CN",
+        "lat": 47.61922,
+        "lng": -122.319282,
+        "units": 221,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98102"
+      },
+      {
+        "permitnum": "6799409-CN",
+        "lat": 47.526127,
+        "lng": -122.269575,
+        "units": 221,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "6890576-CN",
+        "lat": 47.554482,
+        "lng": -122.328972,
+        "units": 220,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98108"
+      },
+      {
+        "permitnum": "6899650-CN",
+        "lat": 47.541937,
+        "lng": -122.283995,
+        "units": 218,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "6510185-PH",
+        "lat": 47.612829,
+        "lng": -122.342242,
+        "units": 216,
+        "status": "Approved to Occupy",
+        "permitclass": "Commercial",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6982857-PH",
+        "lat": 47.617398,
+        "lng": -122.354747,
+        "units": 213,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6944669-CN",
+        "lat": 47.668948,
+        "lng": -122.380916,
+        "units": 210,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6883537-CN",
+        "lat": 47.733226,
+        "lng": -122.31309,
+        "units": 207,
+        "status": "Approved to Occupy",
+        "permitclass": "Multifamily",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "6950507-PH",
+        "lat": 47.670406,
+        "lng": -122.384468,
+        "units": 206,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6691365-PH",
+        "lat": 47.597859,
+        "lng": -122.332368,
+        "units": 206,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6997553-CN",
+        "lat": 47.62561,
+        "lng": -122.349913,
+        "units": 204,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "6823910-CN",
+        "lat": 47.586098,
+        "lng": -122.306595,
+        "units": 203,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98144"
+      },
+      {
+        "permitnum": "6971406-PH",
+        "lat": 47.610891,
+        "lng": -122.329335,
+        "units": 202,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6830093-CN",
+        "lat": 47.699367,
+        "lng": -122.334026,
+        "units": 200,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6775483-PH",
+        "lat": 47.611444,
+        "lng": -122.341687,
+        "units": 200,
+        "status": "Reviews In Process",
+        "permitclass": "Commercial",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6721808-CN",
+        "lat": 47.596977,
+        "lng": -122.324752,
+        "units": 200,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6769850-PH",
+        "lat": 47.676009,
+        "lng": -122.314139,
+        "units": 198,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "6787684-CN",
+        "lat": 47.690899,
+        "lng": -122.352339,
+        "units": 197,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6835343-CN",
+        "lat": 47.613466,
+        "lng": -122.302341,
+        "units": 196,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "7071735-CN",
+        "lat": 47.696983,
+        "lng": -122.33465,
+        "units": 192,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6833919-CN",
+        "lat": 47.705143,
+        "lng": -122.323909,
+        "units": 186,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "7087630-PH",
+        "lat": 47.652206,
+        "lng": -122.353063,
+        "units": 184,
+        "status": "Phase Issued",
+        "permitclass": "Commercial",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6921535-CN",
+        "lat": 47.613018,
+        "lng": -122.329303,
+        "units": 183,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6938729-CN",
+        "lat": 47.668212,
+        "lng": -122.388329,
+        "units": 182,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6732324-CN",
+        "lat": 47.668528,
+        "lng": -122.379641,
+        "units": 181,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6898700-CN",
+        "lat": 47.652449,
+        "lng": -122.343635,
+        "units": 180,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6777657-CN",
+        "lat": 47.661499,
+        "lng": -122.333936,
+        "units": 180,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "7047196-CN",
+        "lat": 47.660184,
+        "lng": -122.291443,
+        "units": 178,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6878350-CN",
+        "lat": 47.668404,
+        "lng": -122.387894,
+        "units": 178,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6775948-PH",
+        "lat": 47.608406,
+        "lng": -122.326937,
+        "units": 176,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6774252-PH",
+        "lat": 47.613942,
+        "lng": -122.344601,
+        "units": 175,
+        "status": "Phase Issued",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6700645-CN",
+        "lat": 47.575233,
+        "lng": -122.296297,
+        "units": 175,
+        "status": "Ready for Issuance",
+        "permitclass": "Multifamily",
+        "zip": "98144"
+      },
+      {
+        "permitnum": "7102489-CN",
+        "lat": 47.650685,
+        "lng": -122.344288,
+        "units": 173,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "7069490-CN",
+        "lat": 47.662555,
+        "lng": -122.305188,
+        "units": 173,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6987007-CN",
+        "lat": 47.622632,
+        "lng": -122.31244,
+        "units": 172,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98112"
+      },
+      {
+        "permitnum": "6813516-CN",
+        "lat": 47.619009,
+        "lng": -122.324339,
+        "units": 171,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98102"
+      },
+      {
+        "permitnum": "6807233-CN",
+        "lat": 47.51969,
+        "lng": -122.265621,
+        "units": 171,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "7034645-PH",
+        "lat": 47.664978,
+        "lng": -122.296655,
+        "units": 169,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6963707-PH",
+        "lat": 47.651997,
+        "lng": -122.352008,
+        "units": 169,
+        "status": "Phase Issued",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6587937-CN",
+        "lat": 47.604075,
+        "lng": -122.319184,
+        "units": 168,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "6875558-CN",
+        "lat": 47.708809,
+        "lng": -122.317556,
+        "units": 167,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "7164912-CN",
+        "lat": 47.615133,
+        "lng": -122.346252,
+        "units": 165,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "7154903-CN",
+        "lat": 47.611531,
+        "lng": -122.323021,
+        "units": 164,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6845885-PH",
+        "lat": 47.668885,
+        "lng": -122.368909,
+        "units": 161,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6979927-PH",
+        "lat": 47.61955,
+        "lng": -122.32372,
+        "units": 160,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98102"
+      },
+      {
+        "permitnum": "6771818-CN",
+        "lat": 47.59949,
+        "lng": -122.3273,
+        "units": 160,
+        "status": "Additional Info Requested",
+        "permitclass": "Commercial",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "6918211-CN",
+        "lat": 47.699438,
+        "lng": -122.325377,
+        "units": 158,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "6878366-CN",
+        "lat": 47.553588,
+        "lng": -122.328589,
+        "units": 158,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98108"
+      },
+      {
+        "permitnum": "7089116-CN",
+        "lat": 47.562451,
+        "lng": -122.376582,
+        "units": 156,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98126"
+      },
+      {
+        "permitnum": "6591136-CN",
+        "lat": 47.574384,
+        "lng": -122.296341,
+        "units": 156,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98144"
+      },
+      {
+        "permitnum": "7108777-PH",
+        "lat": 47.614299,
+        "lng": -122.352642,
+        "units": 154,
+        "status": "Issued",
+        "permitclass": "Commercial",
+        "zip": "98121"
+      },
+      {
+        "permitnum": "6710773-CN",
+        "lat": 47.661483,
+        "lng": -122.31523,
+        "units": 154,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6983492-CN",
+        "lat": 47.618757,
+        "lng": -122.352553,
+        "units": 153,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98109"
+      },
+      {
+        "permitnum": "7083539-CN",
+        "lat": 47.609945,
+        "lng": -122.339984,
+        "units": 150,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98101"
+      },
+      {
+        "permitnum": "6936151-CN",
+        "lat": 47.535693,
+        "lng": -122.280167,
+        "units": 150,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98118"
+      },
+      {
+        "permitnum": "7008420-CN",
+        "lat": 47.601271,
+        "lng": -122.308697,
+        "units": 149,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "7034090-PH",
+        "lat": 47.67397,
+        "lng": -122.317052,
+        "units": 147,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "6769879-PH",
+        "lat": 47.642467,
+        "lng": -122.397895,
+        "units": 146,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98199"
+      },
+      {
+        "permitnum": "6092946-CN",
+        "lat": 47.667414,
+        "lng": -122.383503,
+        "units": 146,
+        "status": "Approved to Occupy",
+        "permitclass": "Multifamily",
+        "zip": "98107"
+      },
+      {
+        "permitnum": "6757671-CN",
+        "lat": 47.622962,
+        "lng": -122.319476,
+        "units": 144,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98102"
+      },
+      {
+        "permitnum": "6837307-CN",
+        "lat": 47.598832,
+        "lng": -122.32333,
+        "units": 141,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98104"
+      },
+      {
+        "permitnum": "7034643-PH",
+        "lat": 47.665088,
+        "lng": -122.298138,
+        "units": 139,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98105"
+      },
+      {
+        "permitnum": "6896092-CN",
+        "lat": 47.594648,
+        "lng": -122.333838,
+        "units": 135,
+        "status": "Additional Info Requested",
+        "permitclass": "Multifamily",
+        "zip": "98134"
+      },
+      {
+        "permitnum": "6806784-PH",
+        "lat": 47.616789,
+        "lng": -122.316493,
+        "units": 134,
+        "status": "Reviews In Process",
+        "permitclass": "Multifamily",
+        "zip": "98122"
+      },
+      {
+        "permitnum": "6822980-CN",
+        "lat": 47.648632,
+        "lng": -122.323932,
+        "units": 134,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98102"
+      },
+      {
+        "permitnum": "6771347-CN",
+        "lat": 47.625668,
+        "lng": -122.358712,
+        "units": 132,
+        "status": "Corrections Required",
+        "permitclass": "Commercial",
+        "zip": "98119"
+      },
+      {
+        "permitnum": "6913278-CN",
+        "lat": 47.674022,
+        "lng": -122.317796,
+        "units": 131,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98115"
+      },
+      {
+        "permitnum": "6751909-CN",
+        "lat": 47.718598,
+        "lng": -122.296837,
+        "units": 130,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98125"
+      },
+      {
+        "permitnum": "6757678-CN",
+        "lat": 47.689279,
+        "lng": -122.344103,
+        "units": 126,
+        "status": "Issued",
+        "permitclass": "Multifamily",
+        "zip": "98103"
+      },
+      {
+        "permitnum": "6564389-CN",
+        "lat": 47.580799,
+        "lng": -122.314445,
+        "units": 126,
+        "status": "Corrections Required",
+        "permitclass": "Multifamily",
+        "zip": "98144"
+      }
+    ]
+  },
+  "landUsePermits": {
+    "byAppliedYear": [
+      {
+        "yr": 2014,
+        "cnt": 871,
+        "units_added": 9403,
+        "units_removed": 103
+      },
+      {
+        "yr": 2015,
+        "cnt": 974,
+        "units_added": 14667,
+        "units_removed": 67
+      },
+      {
+        "yr": 2016,
+        "cnt": 947,
+        "units_added": 12127,
+        "units_removed": 83
+      },
+      {
+        "yr": 2017,
+        "cnt": 907,
+        "units_added": 9989,
+        "units_removed": 14
+      },
+      {
+        "yr": 2018,
+        "cnt": 954,
+        "units_added": 11990,
+        "units_removed": 64
+      },
+      {
+        "yr": 2019,
+        "cnt": 886,
+        "units_added": 13722,
+        "units_removed": 283
+      },
+      {
+        "yr": 2020,
+        "cnt": 687,
+        "units_added": 12457,
+        "units_removed": 265
+      },
+      {
+        "yr": 2021,
+        "cnt": 504,
+        "units_added": 6487,
+        "units_removed": 343
+      },
+      {
+        "yr": 2022,
+        "cnt": 466,
+        "units_added": 7631,
+        "units_removed": 56
+      },
+      {
+        "yr": 2023,
+        "cnt": 409,
+        "units_added": 4293,
+        "units_removed": 233
+      },
+      {
+        "yr": 2024,
+        "cnt": 297,
+        "units_added": 1186,
+        "units_removed": 65
+      },
+      {
+        "yr": 2025,
+        "cnt": 341,
+        "units_added": 3044,
+        "units_removed": 463
+      },
+      {
+        "yr": 2026,
+        "cnt": 336,
+        "units_added": 927,
+        "units_removed": 21
+      }
+    ],
+    "byIssuedYear": [
+      {
+        "yr": 2014,
+        "cnt": 718,
+        "units_added": 7311,
+        "units_removed": 169
+      },
+      {
+        "yr": 2015,
+        "cnt": 772,
+        "units_added": 8085,
+        "units_removed": 66
+      },
+      {
+        "yr": 2016,
+        "cnt": 857,
+        "units_added": 8650,
+        "units_removed": 74
+      },
+      {
+        "yr": 2017,
+        "cnt": 778,
+        "units_added": 11220,
+        "units_removed": 54
+      },
+      {
+        "yr": 2018,
+        "cnt": 680,
+        "units_added": 7228,
+        "units_removed": 56
+      },
+      {
+        "yr": 2019,
+        "cnt": 797,
+        "units_added": 9947,
+        "units_removed": 45
+      },
+      {
+        "yr": 2020,
+        "cnt": 747,
+        "units_added": 11752,
+        "units_removed": 124
+      },
+      {
+        "yr": 2021,
+        "cnt": 592,
+        "units_added": 10177,
+        "units_removed": 289
+      },
+      {
+        "yr": 2022,
+        "cnt": 526,
+        "units_added": 11541,
+        "units_removed": 235
+      },
+      {
+        "yr": 2023,
+        "cnt": 380,
+        "units_added": 6282,
+        "units_removed": 139
+      },
+      {
+        "yr": 2024,
+        "cnt": 326,
+        "units_added": 6295,
+        "units_removed": 111
+      },
+      {
+        "yr": 2025,
+        "cnt": 336,
+        "units_added": 3156,
+        "units_removed": 202
+      },
+      {
+        "yr": 2026,
+        "cnt": 237,
+        "units_added": 1292,
+        "units_removed": 148
+      }
+    ],
+    "byStatus": [
+      {
+        "status": "Completed",
+        "cnt": 11558,
+        "units_added": 31850,
+        "units_removed": 1290
+      },
+      {
+        "status": "Issued",
+        "cnt": 1744,
+        "units_added": 73201,
+        "units_removed": 1188
+      },
+      {
+        "status": "Additional Info Requested",
+        "cnt": 1708,
+        "units_added": 13869,
+        "units_removed": 1061
+      },
+      {
+        "status": "Corrections Required",
+        "cnt": 480,
+        "units_added": 4634,
+        "units_removed": 359
+      },
+      {
+        "status": "Ready for Issuance",
+        "cnt": 11,
+        "units_added": 1007,
+        "units_removed": 2
+      },
+      {
+        "status": "Reviews Completed",
+        "cnt": 107,
+        "units_added": 609,
+        "units_removed": 1
+      },
+      {
+        "status": "Initiated",
+        "cnt": 181,
+        "units_added": 593,
+        "units_removed": 39
+      },
+      {
+        "status": "Scheduled",
+        "cnt": 160,
+        "units_added": 537,
+        "units_removed": 92
+      },
+      {
+        "status": "Reviews In Process",
+        "cnt": 88,
+        "units_added": 535,
+        "units_removed": 0
+      },
+      {
+        "status": "Ready for Publication",
+        "cnt": 18,
+        "units_added": 399,
+        "units_removed": 2
+      },
+      {
+        "status": "Published",
+        "cnt": 82,
+        "units_added": 109,
+        "units_removed": 0
+      },
+      {
+        "status": "Expired",
+        "cnt": 1731,
+        "units_added": 37171,
+        "units_removed": 449
+      },
+      {
+        "status": "Withdrawn",
+        "cnt": 2979,
+        "units_added": 24819,
+        "units_removed": 1204
+      },
+      {
+        "status": "Canceled",
+        "cnt": 3472,
+        "units_added": 3767,
+        "units_removed": 61
+      }
+    ],
+    "reviewTimes": {
+      "sampleSize": 6445,
+      "appToDecisionByYear": {
+        "2016": {
+          "n": 893,
+          "mean": 204.4,
+          "median": 151,
+          "p75": 262
+        },
+        "2017": {
+          "n": 754,
+          "mean": 225.6,
+          "median": 170,
+          "p75": 291
+        },
+        "2018": {
+          "n": 670,
+          "mean": 263.5,
+          "median": 207,
+          "p75": 349
+        },
+        "2019": {
+          "n": 851,
+          "mean": 308.4,
+          "median": 249,
+          "p75": 399
+        },
+        "2020": {
+          "n": 748,
+          "mean": 326,
+          "median": 259,
+          "p75": 409
+        },
+        "2021": {
+          "n": 592,
+          "mean": 431.8,
+          "median": 256.5,
+          "p75": 467
+        },
+        "2022": {
+          "n": 487,
+          "mean": 393.9,
+          "median": 275,
+          "p75": 521
+        },
+        "2023": {
+          "n": 395,
+          "mean": 389.4,
+          "median": 252,
+          "p75": 447
+        },
+        "2024": {
+          "n": 292,
+          "mean": 348.4,
+          "median": 217,
+          "p75": 444
+        },
+        "2025": {
+          "n": 317,
+          "mean": 295.8,
+          "median": 178,
+          "p75": 315
+        },
+        "2026": {
+          "n": 268,
+          "mean": 447.2,
+          "median": 171,
+          "p75": 269
+        }
+      },
+      "appToIssuedByYear": {
+        "2016": {
+          "n": 857,
+          "mean": 285.4,
+          "median": 215,
+          "p75": 326
+        },
+        "2017": {
+          "n": 778,
+          "mean": 296,
+          "median": 236.5,
+          "p75": 360
+        },
+        "2018": {
+          "n": 678,
+          "mean": 336.7,
+          "median": 271.5,
+          "p75": 420
+        },
+        "2019": {
+          "n": 792,
+          "mean": 353.1,
+          "median": 305,
+          "p75": 440
+        },
+        "2020": {
+          "n": 747,
+          "mean": 428.9,
+          "median": 348,
+          "p75": 527
+        },
+        "2021": {
+          "n": 592,
+          "mean": 444.6,
+          "median": 352,
+          "p75": 544
+        },
+        "2022": {
+          "n": 525,
+          "mean": 586.5,
+          "median": 362,
+          "p75": 622
+        },
+        "2023": {
+          "n": 380,
+          "mean": 476.5,
+          "median": 331.5,
+          "p75": 529
+        },
+        "2024": {
+          "n": 326,
+          "mean": 492.3,
+          "median": 335.5,
+          "p75": 595
+        },
+        "2025": {
+          "n": 335,
+          "mean": 450.7,
+          "median": 262,
+          "p75": 484
+        },
+        "2026": {
+          "n": 237,
+          "mean": 577.6,
+          "median": 235,
+          "p75": 364
+        }
+      },
+      "appToIssuedByClass": {
+        "Commercial": {
+          "n": 626,
+          "mean": 532.3,
+          "median": 356,
+          "p75": 568
+        },
+        "Industrial": {
+          "n": 93,
+          "mean": 463.4,
+          "median": 295,
+          "p75": 509
+        },
+        "Multifamily": {
+          "n": 2905,
+          "mean": 404.9,
+          "median": 318,
+          "p75": 474
+        },
+        "Vacant Land": {
+          "n": 39,
+          "mean": 403.4,
+          "median": 288,
+          "p75": 587
+        },
+        "Institutional": {
+          "n": 148,
+          "mean": 400.7,
+          "median": 288.5,
+          "p75": 413
+        },
+        "Single Family/Duplex": {
+          "n": 2424,
+          "mean": 355.8,
+          "median": 245,
+          "p75": 384
+        }
+      }
+    },
+    "top15Active": [
+      {
+        "permitnum": "3039169-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "3020 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 796,
+        "housingunitsremoved": 0,
+        "estprojectcost": 95000000,
+        "applieddate": "2022-12-08",
+        "decisiondate": "2024-04-25",
+        "issueddate": "2024-05-28",
+        "latitude": 47.662055,
+        "longitude": -122.295462,
+        "description": "Land Use Application to allow two 7-story and one 8-story apartment buildings with retail (796 units total). Parking for 679 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3039169-LU"
+      },
+      {
+        "permitnum": "3041642-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "5900 37TH AVE S",
+        "originalzip": "98118",
+        "housingunitsadded": 746,
+        "housingunitsremoved": 164,
+        "estprojectcost": 187500000,
+        "applieddate": "2025-01-03",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.548804,
+        "longitude": -122.286076,
+        "description": "Land Use Application to allow a major phased development with 5 new residential buildings with retail (735 units total). Parking for 561 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3041642-LU"
+      },
+      {
+        "permitnum": "3036780-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "4522 ROOSEVELT WAY NE",
+        "originalzip": "98105",
+        "housingunitsadded": 586,
+        "housingunitsremoved": 0,
+        "estprojectcost": 12000000,
+        "applieddate": "2022-09-06",
+        "decisiondate": "2024-02-29",
+        "issueddate": "2024-05-17",
+        "latitude": 47.662034,
+        "longitude": -122.317211,
+        "description": "Land Use application to allow a 22-story, 278-unit apartment building with retail, and a 22-story, 308-unit apartment building with retail.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3036780-LU"
+      },
+      {
+        "permitnum": "3038980-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "1032 S JACKSON ST",
+        "originalzip": "98104",
+        "housingunitsadded": 450,
+        "housingunitsremoved": 0,
+        "estprojectcost": 70000000,
+        "applieddate": "2022-06-29",
+        "decisiondate": "2023-06-05",
+        "issueddate": "2023-07-17",
+        "latitude": 47.5995,
+        "longitude": -122.31852,
+        "description": "Land Use Application to allow an 11-story, 397-unit apartment building with retail and restaurant. Parking for 236 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3038980-LU"
+      },
+      {
+        "permitnum": "3039257-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "2405 7TH AVE",
+        "originalzip": "98121",
+        "housingunitsadded": 442,
+        "housingunitsremoved": 0,
+        "estprojectcost": 215000000,
+        "applieddate": "2022-07-27",
+        "decisiondate": "2023-08-24",
+        "issueddate": "2023-09-13",
+        "latitude": 47.618066,
+        "longitude": -122.343302,
+        "description": "Land Use Application to allow a 44-story, 442-unit apartment building with retail. Parking for 260 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3039257-LU"
+      },
+      {
+        "permitnum": "3039115-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "2705 S HANFORD ST",
+        "originalzip": "98144",
+        "housingunitsadded": 425,
+        "housingunitsremoved": 0,
+        "estprojectcost": 80000000,
+        "applieddate": "2023-04-06",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.574843,
+        "longitude": -122.297889,
+        "description": "Land use application to allow a 6-story, 427-unit apartment building with child care center and retail. Parking for 220 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3039115-LU"
+      },
+      {
+        "permitnum": "3040352-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "1225 E SPRUCE ST",
+        "originalzip": "98122",
+        "housingunitsadded": 400,
+        "housingunitsremoved": 0,
+        "estprojectcost": 110000000,
+        "applieddate": "2023-09-12",
+        "decisiondate": "2025-04-21",
+        "issueddate": "2025-05-08",
+        "latitude": 47.603335,
+        "longitude": -122.315645,
+        "description": "Land use application to allow a 9-story, 394-unit apartment building with retail. Parking for 194 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3040352-LU"
+      },
+      {
+        "permitnum": "3038668-LU",
+        "permitclass": "Commercial",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "2033 4TH AVE",
+        "originalzip": "98121",
+        "housingunitsadded": 400,
+        "housingunitsremoved": 0,
+        "estprojectcost": 25000000,
+        "applieddate": "2022-01-18",
+        "decisiondate": "2023-04-27",
+        "issueddate": "2023-05-31",
+        "latitude": 47.613353,
+        "longitude": -122.341312,
+        "description": "Land Use application to allow a 45-story, 400-unit apartment building with retail. Parking for 24 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3038668-LU"
+      },
+      {
+        "permitnum": "3037792-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "1013 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 366,
+        "housingunitsremoved": 0,
+        "estprojectcost": 75000000,
+        "applieddate": "2021-10-08",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.660993,
+        "longitude": -122.317071,
+        "description": "Land Use application to allow a 27-story, 366-unit apartment building with retail and office.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3037792-LU"
+      },
+      {
+        "permitnum": "3038146-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "301 15TH AVE E",
+        "originalzip": "98112",
+        "housingunitsadded": 347,
+        "housingunitsremoved": 0,
+        "estprojectcost": 100000000,
+        "applieddate": "2022-04-06",
+        "decisiondate": "2023-09-18",
+        "issueddate": "2024-10-31",
+        "latitude": 47.620802,
+        "longitude": -122.313032,
+        "description": "Land Use application to allow two 5-story apartment buildings (336 units total) with retail. Parking for 373 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3038146-LU"
+      },
+      {
+        "permitnum": "3038399-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "1107 NE 45TH ST",
+        "originalzip": "98105",
+        "housingunitsadded": 340,
+        "housingunitsremoved": 0,
+        "estprojectcost": 75000000,
+        "applieddate": "2022-03-03",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.661009,
+        "longitude": -122.316276,
+        "description": "Land Use Application to allow a 28-story, 336-unit apartment building with retail. Parking for 92 vehicles proposed.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3038399-LU"
+      },
+      {
+        "permitnum": "3039950-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Corrections Required",
+        "originaladdress1": "8340 35TH AVE NE",
+        "originalzip": "98115",
+        "housingunitsadded": 317,
+        "housingunitsremoved": 0,
+        "estprojectcost": 200000000,
+        "applieddate": "2025-01-21",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.689142,
+        "longitude": -122.290247,
+        "description": "Land Use Application to allow a 6-story, 306-unit apartment building with retail and childcare center.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3039950-LU"
+      },
+      {
+        "permitnum": "3042860-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Ready for Issuance",
+        "originaladdress1": "9750 3RD AVE NE",
+        "originalzip": "98115",
+        "housingunitsadded": 300,
+        "housingunitsremoved": 0,
+        "estprojectcost": 65000000,
+        "applieddate": "2025-06-11",
+        "decisiondate": "",
+        "issueddate": "",
+        "latitude": 47.70063,
+        "longitude": -122.324866,
+        "description": "Land Use application to allow future development of a 7-story apartment building with 302 units and retail.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3042860-LU"
+      },
+      {
+        "permitnum": "3037301-LU",
+        "permitclass": "Multifamily",
+        "permittypemapped": "Master Use Permit",
+        "statuscurrent": "Issued",
+        "originaladdress1": "7324 M L KING JR WAY S",
+        "originalzip": "98118",
+        "housingunitsadded": 271,
+        "housingunitsremoved": 0,
+        "estprojectcost": 24578566,
+        "applieddate": "2021-04-29",
+        "decisiondate": "2022-05-26",
+        "issueddate": "2022-06-17",
+        "latitude": 47.536156,
+        "longitude": -122.280246,
+        "description": "Land Use Application to allow an 8-story, 271-unit apartment building with retail.",
+        "link": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=3037301-LU"
+      }
+    ]
+  },
+  "tradePermits": {
+    "byAppliedYear": [
+      {
+        "yr": 2014,
+        "cnt": 9578
+      },
+      {
+        "yr": 2015,
+        "cnt": 11322
+      },
+      {
+        "yr": 2016,
+        "cnt": 13159
+      },
+      {
+        "yr": 2017,
+        "cnt": 14528
+      },
+      {
+        "yr": 2018,
+        "cnt": 15387
+      },
+      {
+        "yr": 2019,
+        "cnt": 15271
+      },
+      {
+        "yr": 2020,
+        "cnt": 14132
+      },
+      {
+        "yr": 2021,
+        "cnt": 16783
+      },
+      {
+        "yr": 2022,
+        "cnt": 20397
+      },
+      {
+        "yr": 2023,
+        "cnt": 20226
+      },
+      {
+        "yr": 2024,
+        "cnt": 18546
+      },
+      {
+        "yr": 2025,
+        "cnt": 18451
+      },
+      {
+        "yr": 2026,
+        "cnt": 16191
+      }
+    ],
+    "byIssuedYear": [
+      {
+        "yr": 2014,
+        "cnt": 9186
+      },
+      {
+        "yr": 2015,
+        "cnt": 10905
+      },
+      {
+        "yr": 2016,
+        "cnt": 12735
+      },
+      {
+        "yr": 2017,
+        "cnt": 14204
+      },
+      {
+        "yr": 2018,
+        "cnt": 15832
+      },
+      {
+        "yr": 2019,
+        "cnt": 16011
+      },
+      {
+        "yr": 2020,
+        "cnt": 14697
+      },
+      {
+        "yr": 2021,
+        "cnt": 17501
+      },
+      {
+        "yr": 2022,
+        "cnt": 20821
+      },
+      {
+        "yr": 2023,
+        "cnt": 20841
+      },
+      {
+        "yr": 2024,
+        "cnt": 19044
+      },
+      {
+        "yr": 2025,
+        "cnt": 18952
+      },
+      {
+        "yr": 2026,
+        "cnt": 16953
+      }
+    ]
+  },
+  "catalog": [
+    {
+      "id": "76t5-zqzr",
+      "title": "Building Permits",
+      "desc": "Construction, demolition, grading, and phased permits issued or in review by SDCI.",
+      "rows": "204,000+"
+    },
+    {
+      "id": "ht3q-kdvx",
+      "title": "Land Use Permits",
+      "desc": "Master Use Permits (MUPs), design review, zoning decisions, and subdivisions.",
+      "rows": "24,700+"
+    },
+    {
+      "id": "c87v-5hwh",
+      "title": "Trade Permits",
+      "desc": "Mechanical, electrical, boiler, elevator, and side sewer permits across Seattle.",
+      "rows": "291,125"
+    },
+    {
+      "id": "tqk8-y2z5",
+      "title": "Plan Review",
+      "desc": "Plan review cycles, discipline teams, complexity tiers, and correction results.",
+      "rows": "349,866"
+    },
+    {
+      "id": "crg2-ssqd",
+      "title": "Permit Review Time Data",
+      "desc": "City versus applicant calendar and business day durations for review tasks.",
+      "rows": "550,226"
+    }
+  ]
+}

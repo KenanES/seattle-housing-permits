@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seattle Housing Permits Information: Land Use, Construction, and Review Timelines</title>
+  <meta name="description" content="Seattle Housing Permits Information tracks active housing units under construction (19,745 issued), building and land use permit timelines by housing type, historical 2014 to 2026 averages, and live Seattle SDCI Open Data APIs.">
+  <meta name="keywords" content="Seattle housing permits, Seattle building permits, Seattle land use permits, SDCI permit timelines, Seattle construction pipeline, Seattle Master Use Permit, Seattle Open Data, Middle Housing Seattle, DADU Seattle">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="Seattle Housing Permits Information">
+  <link rel="canonical" href="https://seattlepermits.org/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seattlepermits.org/">
+  <meta property="og:site_name" content="Seattle Housing Permits Information">
+  <meta property="og:title" content="Seattle Housing Permits Information: Land Use, Construction, and Review Timelines">
+  <meta property="og:description" content="Seattle housing permit issuance fell 59% below its 10-year norm in 2026, even as building and land use review times improved. Explore live SDCI data, timelines, and neighborhood maps.">
+  <meta property="og:image" content="https://seattlepermits.org/assets/seattle-skyline-real.jpg">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seattle Housing Permits Information">
+  <meta name="twitter:description" content="Live Seattle housing pipeline, permit review times by building type, historical 2014 to 2026 averages, and Seattle Open Data API feed.">
+  <meta name="twitter:image" content="https://seattlepermits.org/assets/seattle-skyline-real.jpg">
+
+  <link rel="alternate" type="text/markdown" href="https://seattlepermits.org/llms.txt" title="LLM-readable concise summary (llms.txt)">
+  <link rel="alternate" type="text/markdown" href="https://seattlepermits.org/llms-full.txt" title="LLM-readable complete dataset reference (llms-full.txt)">
+  <link rel="alternate" type="application/json" href="https://seattlepermits.org/data/seattle-permits-summary.json" title="Machine-readable Seattle housing permits JSON snapshot">
+  <link rel="sitemap" type="application/xml" href="https://seattlepermits.org/sitemap.xml" title="Sitemap">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Seattle Housing Permits Information",
+        "url": "https://seattlepermits.org/",
+        "description": "Public civic analytics tracking Seattle building permits, land use Master Use Permits, trade permits, housing units under construction, and historical review times from City of Seattle Open Data.",
+        "inLanguage": "en-US",
+        "dateModified": "2026-11-25"
+      },
+      {
+        "@type": "Dataset",
+        "name": "Seattle Housing, Land Use, and Construction Permits Aggregated Dataset (2014 to 2026)",
+        "url": "https://seattlepermits.org/",
+        "description": "Aggregated counts, housing units added and removed, estimated construction valuations, active project pipelines, and exact mean/median/percentile permit processing times across 72,319 issued building permits and 6,445 land use permits from Seattle SDCI.",
+        "temporalCoverage": "2014-01-01/2026-11-23",
+        "dateModified": "2026-11-25",
+        "spatialCoverage": {
+          "@type": "Place",
+          "name": "Seattle, Washington, USA",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.6062,
+            "longitude": -122.3321
+          }
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "City of Seattle Department of Construction and Inspections (SDCI)",
+          "url": "https://data.seattle.gov"
+        },
+        "isBasedOn": [
+          "https://data.seattle.gov/d/76t5-zqzr",
+          "https://data.seattle.gov/d/ht3q-kdvx",
+          "https://data.seattle.gov/d/c87v-5hwh"
+        ],
+        "distribution": [
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "name": "Seattle Housing Permits Information Aggregated JSON",
+            "contentUrl": "https://seattlepermits.org/data/seattle-permits-summary.json"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "text/markdown",
+            "name": "LLM Full Data Reference (llms-full.txt)",
+            "contentUrl": "https://seattlepermits.org/llms-full.txt"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "name": "Seattle Building Permits Live Socrata API (76t5-zqzr)",
+            "contentUrl": "https://data.seattle.gov/resource/76t5-zqzr.json"
+          },
+          {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "name": "Seattle Land Use Permits Live Socrata API (ht3q-kdvx)",
+            "contentUrl": "https://data.seattle.gov/resource/ht3q-kdvx.json"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How many housing units are currently under construction in Seattle?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As of November 23, 2026, City of Seattle SDCI Building Permits data (76t5-zqzr) shows 19,745 gross housing units across 8,128 issued and phase-issued building permits, plus 65,064 gross units across open pre-issuance review stages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long do building and land use permits take in Seattle by housing type?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Across 2016 to 2026 issued permits: Single Family Standalone and Townhomes take 40 days median (105.8 days average) for building permit review and 296 days median for construction; Multifamily apartment buildings take 155 days median (232.2 days average) for building review, 318 days median (404.9 days average) for Land Use Master Use Permits, and 409 days median for construction; Commercial business buildings take 46 days median (96.3 days average) for building review and 169 days median for build-out."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Building, Land Use, and Trade permits in Seattle?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Building permits (76t5-zqzr) cover structural construction, new homes, apartments, additions, remodels, shoring, and demolitions. Land Use permits (ht3q-kdvx) cover Master Use Permits (MUPs), zoning approvals, design review, environmental review, and lot subdivisions. Trade permits (c87v-5hwh) cover mechanical (HVAC), electrical, plumbing and side sewer, boiler, elevator, and refrigeration systems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does 2026 Seattle housing permit output compare to the 10-year historical average?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Through November 23, 2026, Seattle issued 4,442 housing units year-to-date compared with the 10-year annual average (2016 to 2025) of 10,814 housing units issued per year (down 59%). Peak issuance occurred in 2021 at 16,123 units."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#overview">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#overview" aria-label="Seattle Housing Permits Information home">
+        <span class="brand-name">Seattle Housing Permits Information</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary sections">
+        <a href="#production">Production</a>
+        <a href="#turnaround">Timelines</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#geography">Seattle Map</a>
+        <a href="./feed.html" class="nav-feed-link">Live Feed &amp; API</a>
+      </nav>
+
+      <div class="header-dateline">
+        <span>Through Nov 23, 2026</span>
+        <button type="button" class="sync-text-btn" id="refresh-live-btn">
+          <svg class="refresh-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13.5 8a5.5 5.5 0 1 1-1.35-3.6M13.5 2.5v2.75H10.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-label">Sync live API</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-jump-bar" aria-label="Mobile section navigation">
+      <div class="mobile-jump-inner">
+        <a href="#overview">Overview</a>
+        <a href="#production">Production</a>
+        <a href="#turnaround">Timelines</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#geography">Map</a>
+        <a href="./feed.html">Live Feed &amp; API</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="broadsheet-hero" id="overview" aria-labelledby="page-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-h1" id="page-title">Seattle housing permits fell <em>59% below</em> their decade norm, even as review times sped up.</h1>
+            <p class="hero-deck">
+              Through November 2026, the city issued 4,442 new housing units against a ten-year average of 10,814 per year. Meanwhile, median building permit approval eased to 58.5 days and Land Use Master Use Permit issuance improved 22% faster than the decade norm.
+              <span class="data-freshness" id="data-freshness" aria-live="polite">SDCI open data verified Nov 25, 2026 (records through Nov 23, 2026).</span>
+            </p>
+          </div>
+
+          <figure class="hero-figure">
+            <img src="./assets/seattle-skyline-real.jpg" width="1024" height="640" alt="Seattle waterfront, Space Needle, and snow-capped Cascade alpine peaks at dusk">
+            <figcaption class="hero-caption">
+              <span>Seattle waterfront, Space Needle, and alpine peaks at dusk.</span>
+              <span class="hero-caption-stat">78,764 permits analyzed</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Headline Seattle housing and permitting metrics">
+      <div class="container">
+        <div class="kpi-ledger" id="kpi-ledger">
+          <article class="kpi-cell">
+            <div class="kpi-label">Authorized for construction</div>
+            <div class="kpi-value" id="kpi-units-issued">19,745</div>
+            <p class="kpi-detail" id="kpi-units-issued-sub">Gross units across 8,128 issued and phased building permits, plus 65,064 units in active review.</p>
+          </article>
+
+          <article class="kpi-cell">
+            <div class="kpi-label">Median building review</div>
+            <div class="kpi-value" id="kpi-bp-days">58.5 days</div>
+            <p class="kpi-detail" id="kpi-bp-days-sub">2026 YTD median (122.4d mean, <span class="delta-pos">-21% vs 2024 peak</span>). Multifamily averages 232.2 days.</p>
+          </article>
+
+          <article class="kpi-cell">
+            <div class="kpi-label">Median land use MUP</div>
+            <div class="kpi-value" id="kpi-lu-days">235 days</div>
+            <p class="kpi-detail" id="kpi-lu-days-sub">2026 YTD median to issue (<span class="delta-pos">-22% vs 10-yr norm</span>). Multifamily MUPs: 318d median (404.9d avg).</p>
+          </article>
+
+          <article class="kpi-cell">
+            <div class="kpi-label">2026 units issued YTD</div>
+            <div class="kpi-value" id="kpi-ytd-velocity">4,442</div>
+            <p class="kpi-detail" id="kpi-ytd-velocity-sub">Compared with 10,814 ten-year annual average (2016 to 2025), <span class="delta-neg">-59%</span>.</p>
+          </article>
+        </div>
+
+        <div class="typology-band" aria-labelledby="typology-heading">
+          <div class="typology-band-head">
+            <h2 id="typology-heading">Typical permit timelines by building type</h2>
+            <p class="typology-band-sub">Calendar days across 72,319 issued building permits and 6,445 land use permits (2016 to 2026).</p>
+          </div>
+          <div class="typology-legend">
+            <span class="legend-item"><span class="swatch swatch-evergreen"></span>Solid bar: median calendar days</span>
+            <span class="legend-item"><span class="swatch swatch-evergreen" style="opacity:0.28"></span>Tinted extension: mean (average) calendar days</span>
+          </div>
+
+          <div class="typology-grid" id="typology-timelines-grid">
+            <article class="typology-col">
+              <h3 class="typology-title">Single Family Home Standalone + Townhomes</h3>
+              <p class="typology-note">45,256 issued permits: 40d median (106d avg) building review, 245d median (356d avg) Land Use MUP if subdivision required, 296d median (354d avg) construction.</p>
+            </article>
+            <article class="typology-col">
+              <h3 class="typology-title">Multifamily Home / Apartment buildings</h3>
+              <p class="typology-note">8,274 issued permits: 155d median (232d avg) building review, 318d median (405d avg) Land Use MUP, 409d median (468d avg) construction.</p>
+            </article>
+            <article class="typology-col">
+              <h3 class="typology-title">Business buildings</h3>
+              <p class="typology-note">15,023 commercial and 742 industrial permits: 46d median (96d avg) commercial review, 356d median (532d avg) ground-up Land Use MUP, 169d median (272d avg) build-out.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-section" id="production" aria-labelledby="production-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="production-heading">Historical housing and permit production</h2>
+            <p class="section-desc">Track annual permit counts, housing units added versus removed, and estimated construction valuation from 2014 through 2026 against the 10-year norm.</p>
+          </div>
+
+          <div class="control-group">
+            <div class="segmented" role="group" aria-label="Metric selection" id="prod-metric-tabs">
+              <button type="button" aria-pressed="true" data-metric="units">Housing units</button>
+              <button type="button" aria-pressed="false" data-metric="count">Permit count</button>
+              <button type="button" aria-pressed="false" data-metric="cost">Est. value</button>
+            </div>
+
+            <select class="select-control" id="prod-date-basis" aria-label="Date basis">
+              <option value="issued">By issued year</option>
+              <option value="applied">By applied year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dataset-glossary" id="dataset-glossary" role="group" aria-label="Select permit dataset and read definitions">
+          <button type="button" class="glossary-item active" aria-pressed="true" data-dataset="building">
+            <span class="glossary-term">Building permits</span>
+            <span class="glossary-def">Structural construction, new houses, apartments, additions, remodels, shoring, and demolitions reviewed for building code safety (<code>76t5-zqzr</code>).</span>
+          </button>
+          <button type="button" class="glossary-item" aria-pressed="false" data-dataset="landuse">
+            <span class="glossary-term">Land use permits</span>
+            <span class="glossary-def">Master Use Permits (MUPs), zoning approvals, design review, environmental review, and lot subdivisions required before building larger or complex projects (<code>ht3q-kdvx</code>).</span>
+          </button>
+          <button type="button" class="glossary-item" aria-pressed="false" data-dataset="trade">
+            <span class="glossary-term">Trade permits</span>
+            <span class="glossary-def">Mechanical (HVAC), electrical, plumbing and side sewer, boiler, elevator, and refrigeration systems installed inside or connected to buildings (<code>c87v-5hwh</code>).</span>
+          </button>
+        </div>
+
+        <div class="chart-stage">
+          <div class="chart-meta-bar">
+            <div class="chart-legend" id="prod-chart-legend"></div>
+            <div class="chart-summary-stat" id="prod-chart-stat" aria-live="polite"></div>
+          </div>
+          <div class="chart-click-hint">Click any year bar to inspect exact permit totals and pull live projects from data.seattle.gov.</div>
+          <div class="chart-canvas-wrap" id="prod-chart-container"></div>
+          <div class="chart-detail-drawer" id="prod-year-detail" hidden></div>
+        </div>
+
+        <div class="split-grid split-55-45 section-subgrid">
+          <div class="editorial-col">
+            <h3 class="block-heading">Historical benchmarks (2014 to 2026)</h3>
+            <p class="block-desc">Full-year ten-year averages exclude 2026 year-to-date partial totals so historical baselines stay comparable.</p>
+            <div class="table-wrap">
+              <table class="data-table compact-table" id="historical-benchmarks-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Metric</th>
+                    <th scope="col" class="num">10-yr avg (16 to 25)</th>
+                    <th scope="col" class="num">Peak year</th>
+                    <th scope="col" class="num">2025 full yr</th>
+                    <th scope="col" class="num">2026 YTD</th>
+                  </tr>
+                </thead>
+                <tbody id="historical-benchmarks-body">
+                  <tr><td class="cell-primary">Housing units issued (Building)</td><td class="num">10,814</td><td class="num">16,123 (2021)</td><td class="num">8,972</td><td class="num">4,442</td></tr>
+                  <tr><td class="cell-primary">Housing units applied (Building)</td><td class="num">13,517</td><td class="num">22,916 (2020)</td><td class="num">5,543</td><td class="num">3,587</td></tr>
+                  <tr><td class="cell-primary">Building permits issued</td><td class="num">6,866</td><td class="num">8,051 (2017)</td><td class="num">6,334</td><td class="num">5,814</td></tr>
+                  <tr><td class="cell-primary">Building valuation issued</td><td class="num">$4.52B</td><td class="num">$6.85B (2025)</td><td class="num">$6.85B</td><td class="num">$4.21B</td></tr>
+                  <tr><td class="cell-primary">Land Use MUP units applied</td><td class="num">8,293</td><td class="num">14,667 (2015)</td><td class="num">3,044</td><td class="num">927</td></tr>
+                  <tr><td class="cell-primary">Trade permits issued</td><td class="num">17,064</td><td class="num">20,841 (2023)</td><td class="num">18,952</td><td class="num">16,953</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="editorial-col">
+            <h3 class="block-heading">Housing category mix (2020 to 2026)</h3>
+            <p class="block-desc">SDCI housing typology assigned to building permit applications filed since 2020, with plain-English definitions.</p>
+            <div class="bar-list" id="housing-category-bars"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-section" id="turnaround" aria-labelledby="turnaround-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="turnaround-heading">Permit review and construction timelines</h2>
+            <p class="section-desc">Mean, median, and upper-quartile calendar durations calculated across 72,319 issued building permits and 6,445 land use permits from 2016 through 2026.</p>
+          </div>
+
+          <div class="control-group">
+            <div class="segmented" role="group" aria-label="Timeline stage" id="time-series-tabs">
+              <button type="button" aria-pressed="true" data-stage="bp_app_iss">Building review</button>
+              <button type="button" aria-pressed="false" data-stage="bp_iss_comp">Construction</button>
+              <button type="button" aria-pressed="false" data-stage="lu_app_dec">MUP decision</button>
+              <button type="button" aria-pressed="false" data-stage="lu_app_iss">MUP issuance</button>
+            </div>
+
+            <label class="toggle-inline">
+              <input type="checkbox" id="time-show-p90" checked>
+              <span>Show 75th to 90th pct spread</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="lifecycle-grid" id="permit-lifecycle-graphic" aria-label="Multifamily permitting lifecycle across four stages"></div>
+
+        <div class="chart-stage">
+          <div class="chart-meta-bar">
+            <div class="chart-legend" id="time-chart-legend"></div>
+            <div class="chart-summary-stat" id="time-chart-stat" aria-live="polite"></div>
+          </div>
+          <div class="chart-click-hint">Click any year on the chart to compare all four turnaround stages side by side.</div>
+          <div class="chart-canvas-wrap" id="time-chart-container"></div>
+          <div class="chart-detail-drawer" id="time-year-detail" hidden></div>
+        </div>
+
+        <div class="split-grid split-58-42 section-subgrid">
+          <div class="editorial-col">
+            <div class="block-header-row">
+              <div>
+                <h3 class="block-heading">Turnaround by permit class</h3>
+                <p class="block-desc">Click any permit class to inspect full duration percentiles and jump to active projects.</p>
+              </div>
+              <div class="segmented segmented-sm" role="group" aria-label="Permit class dataset" id="class-time-tabs">
+                <button type="button" aria-pressed="true" data-kind="building">Building</button>
+                <button type="button" aria-pressed="false" data-kind="landuse">Land use</button>
+              </div>
+            </div>
+            <div class="range-chart-wrap" id="class-range-chart"></div>
+            <div class="chart-detail-drawer compact-detail" id="class-range-detail" hidden></div>
+          </div>
+
+          <div class="editorial-col">
+            <h3 class="block-heading">Multifamily entitlement to occupancy</h3>
+            <p class="block-desc">Typical calendar time across major permitting and build stages for Seattle multifamily housing.</p>
+            <div class="journey-stack" id="multifamily-journey"></div>
+            <p class="methodology-footnote">Developers often submit building permits before final Master Use Permit issuance, so combined end-to-end timelines can overlap by 2 to 6 months.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-section" id="pipeline" aria-labelledby="pipeline-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="pipeline-heading">Active housing pipeline and major developments</h2>
+            <p class="section-desc">Open permits grouped into four clear review phases, paired with Seattle's largest active housing developments.</p>
+          </div>
+
+          <div class="control-group">
+            <div class="segmented" role="group" aria-label="Pipeline dataset" id="pipeline-dataset-tabs">
+              <button type="button" aria-pressed="true" data-kind="building">Building permits</button>
+              <button type="button" aria-pressed="false" data-kind="landuse">Land use MUPs</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-grid" id="status-funnel-grid" aria-label="Active pipeline phases"></div>
+
+        <div class="projects-toolbar">
+          <div>
+            <h3 class="block-heading" id="projects-table-heading">Largest active housing building permits</h3>
+            <p class="block-desc" id="projects-table-count" aria-live="polite">Showing verified active projects filed since 2021. Select any address to inspect full permit details.</p>
+          </div>
+
+          <div class="table-filters">
+            <input type="search" class="search-input" id="project-search" placeholder="Search address, permit #, or ZIP" aria-label="Search active projects">
+            <select class="select-control" id="project-sort" aria-label="Sort projects">
+              <option value="units_desc">Sort: Most units</option>
+              <option value="cost_desc">Sort: Highest valuation</option>
+              <option value="applied_desc">Sort: Newest applied</option>
+            </select>
+            <label class="toggle-inline" id="exclude-demo-wrap">
+              <input type="checkbox" id="exclude-demo-toggle" checked>
+              <span>Building permits only</span>
+            </label>
+            <button type="button" class="btn-secondary" id="reset-pipeline-filters-btn" hidden>Reset filters</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table projects-table" id="projects-table">
+            <thead>
+              <tr>
+                <th scope="col">Address and permit</th>
+                <th scope="col">Class</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="num">Housing units</th>
+                <th scope="col" class="num">Est. cost</th>
+                <th scope="col" class="num">Applied / Issued</th>
+              </tr>
+            </thead>
+            <tbody id="projects-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-section last-section" id="geography" aria-labelledby="geography-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-text">
+            <h2 id="geography-heading">Where Seattle housing is being built</h2>
+            <p class="section-desc">Active housing permit sites across Seattle neighborhoods and total active units by ZIP code. Click any dot to inspect live SDCI details, or select a ZIP to isolate its projects.</p>
+          </div>
+
+          <div class="control-group">
+            <div class="segmented" role="group" aria-label="Map status filter" id="map-status-tabs">
+              <button type="button" aria-pressed="true" data-filter="all">All active</button>
+              <button type="button" aria-pressed="false" data-filter="issued">Under construction</button>
+              <button type="button" aria-pressed="false" data-filter="review">In review</button>
+            </div>
+            <button type="button" class="btn-secondary" id="clear-zip-btn" hidden>Clear ZIP filter</button>
+          </div>
+        </div>
+
+        <div class="split-grid split-56-44">
+          <div class="editorial-col">
+            <div class="map-legend-row">
+              <span class="legend-item"><span class="swatch swatch-evergreen"></span>Issued / under construction</span>
+              <span class="legend-item"><span class="swatch swatch-ochre"></span>In review / corrections</span>
+              <span class="legend-item"><span class="swatch swatch-marine"></span>Ready / approved to occupy</span>
+              <span class="legend-note">Circle area scaled by unit count</span>
+            </div>
+            <div class="map-stage" id="seattle-map-stage"></div>
+          </div>
+
+          <div class="editorial-col">
+            <h3 class="block-heading">Active housing units by ZIP code</h3>
+            <p class="block-desc" id="zip-panel-desc">Active building permits with housing units added. Click a ZIP to isolate it on the map or filter the Pipeline table.</p>
+            <div class="zip-list" id="zip-ranking-list"></div>
+          </div>
+        </div>
+
+        <div class="feed-callout-band">
+          <div class="feed-callout-text">
+            <h2>Live Permit Feed, Open Data APIs, and Methodology</h2>
+            <p>Browse the live stream of newly issued Seattle housing, Middle Housing, and Land Use permits, run live SoQL queries against <code>data.seattle.gov</code>, or inspect data accounting notes.</p>
+          </div>
+          <a class="btn-primary" href="./feed.html">Open Live Feed &amp; Open Data API</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Seattle Housing Permits Information</div>
+      <div class="footer-links" aria-label="Site and data resources">
+        <a href="./feed.html">Live Feed &amp; Methodology</a>
+        <a href="https://data.seattle.gov/d/76t5-zqzr" target="_blank" rel="noopener noreferrer">Seattle SDCI Open Data</a>
+        <a href="./data/seattle-permits-summary.json">JSON Data</a>
+        <a href="./llms.txt">llms.txt</a>
+      </div>
+      <div class="footer-note">Independent civic analytics sourced from City of Seattle Open Data (<code>data.seattle.gov</code>).</div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="detail-drawer" id="detail-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-permit-num" id="drawer-permit-num"></div>
+        <h3 class="drawer-title" id="drawer-title"></h3>
+      </div>
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close project details">Close</button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </aside>
+
+  <div class="chart-tooltip" id="chart-tooltip" role="tooltip" hidden></div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

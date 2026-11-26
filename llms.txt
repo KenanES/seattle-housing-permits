@@ -1,0 +1,37 @@
+# Seattle Housing Permits Information
+
+> Public civic analytics tracking Seattle housing production, land use Master Use Permits (MUPs), construction timelines, and active residential pipelines using City of Seattle Department of Construction and Inspections (SDCI) Socrata Open Data APIs (`data.seattle.gov`). Snapshot verified Nov 25, 2026 (permit records through Nov 23, 2026).
+
+## Quick Verified Facts (As of Nov 23, 2026)
+
+- **Housing units under construction (Issued + Phase Issued building permits):** 19,745 gross units across 8,128 active construction permits (plus 65,064 gross units across open pre-issuance review stages).
+- **2026 YTD housing output vs 10-year norm:** 4,442 housing units issued YTD versus 10,814 ten-year annual average (2016 to 2025), down 59%. Peak issuance was 16,123 units in 2021; peak applications were 22,916 units in 2020.
+- **Overall building permit turnaround (2026 YTD):** 122.4 days mean, 58.5 days median (down from the 2024 peak of 155.0 days mean).
+- **Land Use Master Use Permit turnaround (2026 YTD):** 235 days median to issuance (577.6 days mean due to legacy backlog clearances).
+
+## Typical Permit Timelines by Building Type (2016 to 2026, n = 72,319 Building + 6,445 Land Use)
+
+- **Single Family Home Standalone + Townhomes (`Single Family/Duplex`, n = 45,256):** 40 days median (105.8d mean) building permit review; 296 days median (354.2d mean) construction to completion; 245 days median (355.8d mean) Land Use MUP if subdivision is required.
+- **Multifamily Home / Apartment buildings (`Multifamily`, n = 8,274):** 155 days median (232.2d mean) building permit review; 318 days median (404.9d mean) Land Use MUP; 409 days median (467.6d mean) construction to completion. Typical end-to-end timeline is roughly 2.4 years median (often with partial overlap between MUP and building review).
+- **Business buildings (`Commercial`, n = 15,023; `Industrial`, n = 742):** 46 days median (96.3d mean) commercial building review; 169 days median (271.9d mean) tenant build-out/construction; 356 days median (532.3d mean) Land Use MUP for new ground-up commercial projects. Industrial review averages 151.6 days (90.5d median).
+
+## Permit Type Definitions
+
+- **Building permits (`76t5-zqzr`):** Structural construction, new homes, apartments, additions, remodels, shoring, and demolitions reviewed for building code safety.
+- **Land use permits (`ht3q-kdvx`):** Master Use Permits (MUPs), zoning approvals, design review, environmental review, and lot subdivisions required before building larger or complex projects.
+- **Trade permits (`c87v-5hwh`):** Mechanical (HVAC), electrical, plumbing and side sewer, boiler, elevator, and refrigeration systems installed inside or connected to buildings.
+
+## Machine-Readable Endpoints & LLM Callback Resources
+
+- [Full Data Reference (Markdown)](https://seattlepermits.org/llms-full.txt): Complete 2014 to 2026 annual tables, 2016 to 2026 mean/median/p75/p90 review durations, status funnel, top 25 active housing projects, ZIP code rankings, and live SoQL query templates.
+- [Structured JSON Summary](https://seattlepermits.org/data/seattle-permits-summary.json): Single-file machine-readable JSON snapshot containing all verified aggregates, definitions, timelines, and live Socrata API endpoint specs.
+- [Interactive Web Dashboard](https://seattlepermits.org/): Broadsheet civic analytics, clickable timelines, active pipeline, and Seattle neighborhood map.
+- [Live Permit Feed & Open Data API Bench](https://seattlepermits.org/feed): Real-time stream of newly issued housing permits, Middle Housing & DADU filings, Land Use MUP decisions, and data methodology.
+
+## Live Upstream Seattle Open Data APIs (CORS Enabled, Public JSON)
+
+- Building Permits SODA API: https://data.seattle.gov/resource/76t5-zqzr.json
+- Land Use Permits SODA API: https://data.seattle.gov/resource/ht3q-kdvx.json
+- Trade Permits SODA API: https://data.seattle.gov/resource/c87v-5hwh.json
+- Plan Review SODA API: https://data.seattle.gov/resource/tqk8-y2z5.json
+- Permit Review Time Data SODA API: https://data.seattle.gov/resource/crg2-ssqd.json

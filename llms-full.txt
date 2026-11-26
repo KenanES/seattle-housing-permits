@@ -1,0 +1,138 @@
+# Seattle Housing Permits Information: Complete Data Reference for LLMs and Agents
+
+- **Site Name:** Seattle Housing Permits Information
+- **Canonical URL:** https://seattlepermits.org/
+- **Data Source:** City of Seattle Open Data Portal (`https://data.seattle.gov`), Seattle Department of Construction and Inspections (SDCI)
+- **Snapshot Verified:** 2026-11-25 (latest permit records through 2026-11-23)
+- **Structured JSON Mirror:** https://seattlepermits.org/data/seattle-permits-summary.json
+- **Concise Summary:** https://seattlepermits.org/llms.txt
+
+---
+
+## 1. Executive Summary & Headline KPIs
+
+- **Housing units currently under construction (`Issued` + `Phase Issued` building permits):** 19,745 gross units across 8,128 permits (`18,197` Issued + `1,548` Phase Issued; `788` units removed).
+- **Housing units in active pre-issuance building review:** 65,064 gross units across open non-terminal review statuses (`Additional Info Requested`: 36,425; `Corrections Required`: 12,813; `Reviews In Process`: 8,176; `Scheduled`: 3,084; `Ready for Issuance`: 1,997; `Application Completed`: 1,259; `Awaiting Information`: 531; `Ready for Intake`: 331; `Reviews Completed`: 308; `Corrections Submitted`: 109; `Initiated`: 26; `Scheduled and Submitted`: 5).
+- **Land Use Master Use Permits (`ht3q-kdvx`) active pipeline:** 73,201 units across 1,744 `Issued` MUPs, plus 22,299 units across active land-use review stages.
+- **2026 YTD housing output vs 10-year norm (2016 to 2025):** 4,442 units issued YTD vs 10,814 ten-year annual average (-59%); 3,587 units applied YTD vs 13,517 ten-year annual average (-73%).
+- **2026 YTD building permit review turnaround:** 122.4 days mean, 58.5 days median (75th pct: 156d; 90th pct: 261d).
+- **2026 YTD land use MUP issuance turnaround:** 235 days median, 577.6 days mean (75th pct: 364d).
+
+---
+
+## 2. Permit & Housing Category Definitions
+
+### Core Permit Datasets
+- **Building permits (`76t5-zqzr`):** Structural construction, new houses, apartments, additions, remodels, shoring, and demolitions reviewed for building code safety.
+- **Land use permits (`ht3q-kdvx`):** Master Use Permits (MUPs), zoning approvals, design review, environmental review, and lot subdivisions required before building larger or complex projects.
+- **Trade permits (`c87v-5hwh`):** Mechanical (HVAC), electrical, plumbing and side sewer, boiler, elevator, and refrigeration systems installed inside or connected to buildings.
+
+### SDCI Housing Categories (2020 to 2026 Applications)
+- **Large Multifamily (22,227 units across 276 permits):** Mid-rise and high-rise apartment, condominium, and mixed-use residential buildings with larger unit counts.
+- **Middle Housing (12,338 units across 5,439 permits):** Townhomes, duplexes, triplexes, fourplexes, stacked flats, and cottage housing between single-family homes and large apartments.
+- **Single-Family Add/Alt (948 units across 17,709 permits):** Additions, interior remodels, basement conversions, and attached accessory dwelling units (ADUs) on single-family lots.
+- **Commercial Add/Alt (433 units across 5,982 permits):** Tenant improvements, structural remodels, and residential-over-retail conversions inside commercial buildings.
+- **Pre-Approved DADU Plans (335 units across 291 permits):** Detached backyard cottages (detached accessory dwelling units) built using SDCI's fast-track pre-reviewed plan library.
+- **Multifamily Other (129 units across 69 permits):** Live-work conversions, congregate residences, boarding houses, and specialized multifamily alterations.
+
+---
+
+## 3. Typical Permit Timelines by Building Type (2016 to 2026)
+
+| Building Type | SDCI Class | Issued Sample | Building Review (Median / Mean) | Construction Build (Median / Mean) | Land Use MUP (Median / Mean) |
+|---|---|---:|---:|---:|---:|
+| Single Family Home Standalone + Townhomes | Single Family/Duplex | 45,256 | 40d / 105.8d | 296d / 354.2d | 245d / 355.8d |
+| Multifamily Home / Apartment buildings | Multifamily | 8,274 | 155d / 232.2d | 409d / 467.6d | 318d / 404.9d |
+| Business buildings (Commercial) | Commercial | 15,023 | 46d / 96.3d | 169d / 271.9d | 356d / 532.3d |
+| Industrial buildings | Industrial | 742 | 90.5d / 151.6d | 275.5d / 386.1d | 295d / 463.4d |
+| Institutional buildings | Institutional | 2,245 | 68d / 126.3d | 242d / 341.2d | 288.5d / 400.7d |
+| Vacant Land | Vacant Land | 157 | 113d / 196.2d | 369d / 450.7d | 288d / 403.4d |
+
+---
+
+## 4. Historical Annual Production (2014 to 2026 YTD)
+
+### Building Permits Issued by Year (`76t5-zqzr`)
+| Year | Permits Issued | Housing Units Added | Housing Units Removed | Net Units | Est. Valuation (USD) |
+|---|---:|---:|---:|---:|---:|
+| 2014 | 7,352 | 8,869 | 651 | +8,218 | $3,431,508,308 |
+| 2015 | 7,572 | 11,932 | 543 | +11,389 | $3,744,878,016 |
+| 2016 | 8,042 | 11,021 | 766 | +10,255 | $3,401,507,645 |
+| 2017 | 8,051 | 11,210 | 1,029 | +10,181 | $4,688,715,467 |
+| 2018 | 7,570 | 8,974 | 599 | +8,375 | $3,670,987,339 |
+| 2019 | 7,825 | 11,615 | 624 | +10,991 | $4,715,854,940 |
+| 2020 | 6,161 | 10,374 | 579 | +9,795 | $3,279,390,734 |
+| 2021 | 6,531 | 16,123 | 409 | +15,714 | $5,885,225,828 |
+| 2022 | 6,446 | 12,989 | 453 | +12,536 | $4,396,977,038 |
+| 2023 | 5,848 | 7,940 | 541 | +7,399 | $4,613,455,142 |
+| 2024 | 5,853 | 8,920 | 423 | +8,497 | $3,735,417,173 |
+| 2025 | 6,334 | 8,972 | 563 | +8,409 | $6,847,453,905 |
+| 2026 YTD | 5,814 | 4,442 | 657 | +3,785 | $4,206,529,637 |
+
+### Building Permits Applied by Year (`76t5-zqzr`)
+| Year | Permits Applied | Housing Units Added | Housing Units Removed | Trade Permits Issued (`c87v-5hwh`) | Land Use MUP Units Applied (`ht3q-kdvx`) |
+|---|---:|---:|---:|---:|---:|
+| 2014 | 7,659 | 10,115 | 731 | 9,186 | 9,403 |
+| 2015 | 8,093 | 11,303 | 715 | 10,905 | 14,667 |
+| 2016 | 8,457 | 16,680 | 830 | 12,735 | 12,127 |
+| 2017 | 8,591 | 10,586 | 1,181 | 14,204 | 9,989 |
+| 2018 | 8,409 | 11,206 | 637 | 15,832 | 11,990 |
+| 2019 | 7,646 | 11,602 | 617 | 16,011 | 13,722 |
+| 2020 | 6,550 | 22,916 | 553 | 14,697 | 12,457 |
+| 2021 | 7,056 | 17,107 | 562 | 17,501 | 6,487 |
+| 2022 | 6,770 | 18,073 | 701 | 20,821 | 7,631 |
+| 2023 | 5,603 | 13,193 | 550 | 20,841 | 4,293 |
+| 2024 | 6,064 | 8,266 | 526 | 19,044 | 1,186 |
+| 2025 | 6,257 | 5,543 | 648 | 18,952 | 3,044 |
+| 2026 YTD | 5,684 | 3,587 | 695 | 16,953 | 927 |
+
+---
+
+## 5. Historical Processing & Review Times by Year (2016 to 2026, Calendar Days)
+
+| Year | Building App->Issued (Mean / Median / p90) | Building Issued->Completed (Mean / Median) | Land Use App->Decision (Mean / Median) | Land Use App->Issued (Mean / Median) |
+|---|---:|---:|---:|---:|
+| 2016 | 82.2d / 38d / 217d | 337.3d / 258d | 204.4d / 151d | 285.4d / 215d |
+| 2017 | 88.1d / 34d / 249d | 335.1d / 230d | 225.6d / 170d | 296.0d / 236.5d |
+| 2018 | 99.8d / 26d / 294d | 357.6d / 260d | 263.5d / 207d | 336.7d / 271.5d |
+| 2019 | 113.8d / 45d / 335d | 362.9d / 273d | 308.4d / 249d | 353.1d / 305d |
+| 2020 | 130.2d / 46d / 376d | 419.0d / 321d | 326.0d / 259d | 428.9d / 348d |
+| 2021 | 125.1d / 51d / 331d | 419.5d / 350.5d | 431.8d / 256.5d | 444.6d / 352d |
+| 2022 | 138.8d / 62d / 349d | 405.1d / 364d | 393.9d / 275d | 586.5d / 362d |
+| 2023 | 147.3d / 68d / 363d | 353.8d / 310d | 389.4d / 252d | 476.5d / 331.5d |
+| 2024 | 155.0d / 54d / 400d | 305.0d / 273d | 348.4d / 217d | 492.3d / 335.5d |
+| 2025 | 139.0d / 63d / 313d | 230.8d / 209d | 295.8d / 178d | 450.7d / 262d |
+| 2026 YTD | 122.4d / 58.5d / 261d | 104.8d / 96d* | 447.2d / 171d | 577.6d / 235d |
+
+*Note: 2026 YTD Issued->Completed reflects only fast-finishing projects completed within the same year (right-censoring bias); use 2016 to 2023 cohorts for unbiased construction timelines.*
+
+---
+
+## 6. Top Seattle ZIP Codes by Active Housing Pipeline Units
+
+1. **98105 (University District / Laurelhurst):** 6,685 gross units added (206 permits, +6,388 net)
+2. **98103 (Fremont / Wallingford / Green Lake):** 6,277 gross units added (425 permits, +6,094 net)
+3. **98118 (Rainier Valley / Columbia City):** 5,911 gross units added (509 permits, +5,308 net)
+4. **98122 (Central District / First Hill):** 5,653 gross units added (220 permits, +5,347 net)
+5. **98121 (Belltown / Denny Triangle):** 5,555 gross units added (25 permits, +5,378 net)
+6. **98109 (South Lake Union / Queen Anne):** 5,258 gross units added (91 permits, +5,135 net)
+7. **98104 (Downtown / Pioneer Sq / CID):** 4,709 gross units added (31 permits, +4,530 net)
+8. **98107 (Ballard):** 4,660 gross units added (165 permits, +4,565 net)
+9. **98144 (Mt Baker / Beacon Hill / Judkins):** 4,529 gross units added (280 permits, +4,442 net)
+10. **98102 (Capitol Hill / Eastlake):** 3,323 gross units added (125 permits, +3,216 net)
+
+---
+
+## 7. Live Callback Instructions for LLM Agents & Developers
+
+All upstream City of Seattle Socrata SODA endpoints support anonymous public `GET` requests with CORS (`Access-Control-Allow-Origin: *`).
+
+- **Building Permits (`76t5-zqzr`):** Dates (`applieddate`, `issueddate`, `completeddate`) are `floating_timestamp`. Example live yearly housing query:
+  `https://data.seattle.gov/resource/76t5-zqzr.json?$select=date_extract_y(issueddate)%20as%20yr,count(*)%20as%20cnt,sum(housingunitsadded)%20as%20units_added&$where=issueddate%20>=%20'2014-01-01T00:00:00'&$group=yr&$order=yr%20ASC`
+- **Land Use Permits (`ht3q-kdvx`):** Dates (`applieddate`, `decisiondate`, `issueddate`) are `YYYY-MM-DD` text strings; cast with `::floating_timestamp` in SoQL:
+  `https://data.seattle.gov/resource/ht3q-kdvx.json?$select=date_extract_y(applieddate::floating_timestamp)%20as%20yr,count(*)%20as%20cnt,sum(housingunitsadded)%20as%20units_added&$where=applieddate%20>=%20'2014-01-01'&$group=yr&$order=yr%20ASC`
+- **Trade Permits (`c87v-5hwh`):** Dates are `YYYY-MM-DD` text strings; cast with `::floating_timestamp`.
+
+### Methodology Caveats
+1. **Mean vs Median:** Review times are strongly right-skewed; always cite both median and mean.
+2. **Multi-permit site accounting:** SDCI often attaches site-level `housingunitsadded` to paired demolition (`-DM`), shoring, and phased construction (`-PH`) permits on the same parcel. Filter `permittypemapped = 'Building'` to reduce double counting when listing individual projects.

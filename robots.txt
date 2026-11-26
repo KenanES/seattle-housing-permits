@@ -1,0 +1,36 @@
+# Seattle Housing Permits Information
+# Welcome search engines and LLM / AI retrieval crawlers.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Machine-readable resources for AI agents and crawlers:
+# LLM summary: https://seattlepermits.org/llms.txt
+# Full LLM dataset markdown: https://seattlepermits.org/llms-full.txt
+# Structured JSON snapshot: https://seattlepermits.org/data/seattle-permits-summary.json
+
+Sitemap: https://seattlepermits.org/sitemap.xml
