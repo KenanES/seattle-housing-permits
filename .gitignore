@@ -1,4 +1,7 @@
 .vercel
+.impeccable
 .DS_Store
 *.log
 versions.html
+samples-3d.html
+sample-3d-*.html

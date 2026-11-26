@@ -26,6 +26,7 @@
 - [Full Data Reference (Markdown)](https://seattlepermits.org/llms-full.txt): Complete 2014 to 2026 annual tables, 2016 to 2026 mean/median/p75/p90 review durations, status funnel, top 25 active housing projects, ZIP code rankings, and live SoQL query templates.
 - [Structured JSON Summary](https://seattlepermits.org/data/seattle-permits-summary.json): Single-file machine-readable JSON snapshot containing all verified aggregates, definitions, timelines, and live Socrata API endpoint specs.
 - [Interactive Web Dashboard](https://seattlepermits.org/): Broadsheet civic analytics, clickable timelines, active pipeline, and Seattle neighborhood map.
+- [3D Isometric Permit & Density Atlas](https://seattlepermits.org/atlas3d): Interactive low-compute Three.js isometric model comparing active Seattle SDCI permit clusters against One Seattle Plan (2026) Regional & Urban Center height/FAR capacity and HB 1110 middle-housing eligibility.
 - [Live Permit Feed & Open Data API Bench](https://seattlepermits.org/feed): Real-time stream of newly issued housing permits, Middle Housing & DADU filings, Land Use MUP decisions, and data methodology.
 
 ## Live Upstream Seattle Open Data APIs (CORS Enabled, Public JSON)

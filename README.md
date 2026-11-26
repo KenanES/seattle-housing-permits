@@ -3,9 +3,12 @@
 Live civic analytics tracking Seattle housing production, land use Master Use Permits (MUPs), trade permits, construction timelines, and active residential pipelines from the City of Seattle Open Data Portal (`data.seattle.gov`).
 
 **Live site:** https://seattlepermits.org/
+**3D Isometric Density Atlas:** https://seattlepermits.org/atlas3d
 **Live permit feed & API bench:** https://seattlepermits.org/feed
 
 ## What It Tracks
+
+- **3D Isometric Permit & Density Atlas (`/atlas3d`):** Low-compute, on-demand Three.js orthographic isometric model comparing active SDCI housing permit clusters against One Seattle Plan (2026) Regional and Urban Center height ceilings, HB 1110 middle-housing eligibility, Link Light Rail corridors, and an interactive zoned buildout simulator.
 
 - **Active Housing Construction Pipeline:** Authorized units across `Issued` and `Phase Issued` building permits alongside open pre-issuance review phases and Seattle's largest active multifamily projects.
 - **Permit Review & Construction Timelines (2016 to 2026):** Mean, median, 75th, and 90th percentile durations calculated across 72,319 issued building permits and 6,445 land use permits, broken down across Single Family Standalone + Townhomes, Multifamily / Apartment buildings, and Business buildings.
