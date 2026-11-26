@@ -90,9 +90,12 @@ perspCam.position.copy(orthoCam.position);
 
 let activeCamera = orthoCam;
 let controls = null;
+let isInitialized = false;
 let renderRequested = false;
 let animateTrains = false;
 let animTarget = null;
+let lastFrameTime = performance.now();
+const tmpVec = new THREE.Vector3();
 
 function setupControls(cam, targetVec) {
   if (controls) controls.dispose();
@@ -911,13 +914,12 @@ window.addEventListener("resize", () => {
 });
 
 // Collision-aware label projection (keeps canvas legible and clear of the left rail)
-const tmpVec = new THREE.Vector3();
 function updateLabels() {
   const w = host.clientWidth;
   const h = host.clientHeight;
   const railVisible = !railEl.classList.contains("is-collapsed") && window.innerWidth > 680;
-  const leftSafe = railVisible ? 356 : 16;
-  const rightSafe = window.innerWidth > 960 ? w - 258 : w - 16;
+  const leftEdge = railVisible ? 356 : 16;
+  const rightEdge = window.innerWidth > 960 ? w - 258 : w - 16;
   const placedRects = [];
 
   const sortedLabels = [...labelItems].sort((a, b) => a.priority - b.priority);
@@ -925,16 +927,21 @@ function updateLabels() {
     tmpVec.copy(item.vec).project(activeCamera);
     const sx = (tmpVec.x * 0.5 + 0.5) * w;
     const sy = (-tmpVec.y * 0.5 + 0.5) * h;
-    const inBounds = tmpVec.z < 1 && sx > leftSafe && sx < rightSafe && sy > 30 && sy < h - 76;
+
+    const bw = item.kind === "water" ? 115 : 172;
+    const bh = item.subSpan ? 42 : 24;
+    const inBounds =
+      tmpVec.z < 1 &&
+      sx - bw / 2 >= leftEdge &&
+      sx + bw / 2 <= rightEdge &&
+      sy - bh / 2 >= 18 &&
+      sy + bh / 2 <= h - 74;
 
     if (!inBounds) {
       item.el.style.display = "none";
       continue;
     }
 
-    // Approximate collision box
-    const bw = item.kind === "water" ? 110 : 126;
-    const bh = item.subSpan ? 36 : 22;
     const box = { l: sx - bw / 2, r: sx + bw / 2, t: sy - bh / 2, b: sy + bh / 2 };
 
     const collides =
@@ -954,7 +961,6 @@ function updateLabels() {
 }
 
 // On-demand render scheduler (0% GPU when idle!)
-let lastFrameTime = performance.now();
 function renderFrame(now) {
   renderRequested = false;
   const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
@@ -1002,6 +1008,7 @@ function renderFrame(now) {
 }
 
 function requestRender() {
+  if (!isInitialized) return;
   if (!renderRequested) {
     renderRequested = true;
     lastFrameTime = performance.now();
@@ -1010,6 +1017,7 @@ function requestRender() {
 }
 
 // Handle deep-link URL hash on initial load (e.g. #northgate, #u-district)
+isInitialized = true;
 const initHash = location.hash.replace("#", "");
 if (initHash) {
   const matchedZone = ZONE_MAP.get(initHash);
